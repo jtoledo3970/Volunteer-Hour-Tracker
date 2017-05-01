@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		84B736881EB5647E00FF10E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B736871EB5647E00FF10E4 /* AppDelegate.swift */; };
 		84B7368B1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84B736891EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld */; };
-		84B7368D1EB5647E00FF10E4 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7368C1EB5647E00FF10E4 /* MasterViewController.swift */; };
-		84B7368F1EB5647E00FF10E4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7368E1EB5647E00FF10E4 /* DetailViewController.swift */; };
 		84B736921EB5647E00FF10E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B736901EB5647E00FF10E4 /* Main.storyboard */; };
 		84B736941EB5647E00FF10E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B736931EB5647E00FF10E4 /* Assets.xcassets */; };
 		84B736971EB5647E00FF10E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B736951EB5647E00FF10E4 /* LaunchScreen.storyboard */; };
+		84B7369F1EB56CAC00FF10E4 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7369E1EB56CAC00FF10E4 /* AddTaskViewController.swift */; };
+		84B736A11EB5710900FF10E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B736A01EB5710900FF10E4 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		84B736841EB5647E00FF10E4 /* Volunteer Hour Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Volunteer Hour Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B736871EB5647E00FF10E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B7368A1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Volunteer_Hour_Tracker.xcdatamodel; sourceTree = "<group>"; };
-		84B7368C1EB5647E00FF10E4 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		84B7368E1EB5647E00FF10E4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		84B736911EB5647E00FF10E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84B736931EB5647E00FF10E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B736961EB5647E00FF10E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84B736981EB5647E00FF10E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84B7369E1EB56CAC00FF10E4 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		84B736A01EB5710900FF10E4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				84B736871EB5647E00FF10E4 /* AppDelegate.swift */,
-				84B7368C1EB5647E00FF10E4 /* MasterViewController.swift */,
-				84B7368E1EB5647E00FF10E4 /* DetailViewController.swift */,
 				84B736901EB5647E00FF10E4 /* Main.storyboard */,
+				84B7369E1EB56CAC00FF10E4 /* AddTaskViewController.swift */,
+				84B736A01EB5710900FF10E4 /* ViewController.swift */,
 				84B736931EB5647E00FF10E4 /* Assets.xcassets */,
 				84B736951EB5647E00FF10E4 /* LaunchScreen.storyboard */,
 				84B736981EB5647E00FF10E4 /* Info.plist */,
@@ -144,9 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B736881EB5647E00FF10E4 /* AppDelegate.swift in Sources */,
+				84B7369F1EB56CAC00FF10E4 /* AddTaskViewController.swift in Sources */,
+				84B736A11EB5710900FF10E4 /* ViewController.swift in Sources */,
 				84B7368B1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld in Sources */,
-				84B7368D1EB5647E00FF10E4 /* MasterViewController.swift in Sources */,
-				84B7368F1EB5647E00FF10E4 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +310,7 @@
 				84B7369D1EB5647E00FF10E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
