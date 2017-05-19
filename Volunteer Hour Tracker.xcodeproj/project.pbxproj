@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8442F3FA1ECF376800A36492 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442F3F91ECF376800A36492 /* CategoryTableViewController.swift */; };
 		84B736881EB5647E00FF10E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B736871EB5647E00FF10E4 /* AppDelegate.swift */; };
 		84B7368B1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84B736891EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld */; };
 		84B736921EB5647E00FF10E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B736901EB5647E00FF10E4 /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8432827D1ECA7B320090F662 /* Volunteer Hour Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Volunteer Hour Tracker.entitlements"; sourceTree = "<group>"; };
+		8442F3F91ECF376800A36492 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		84B736841EB5647E00FF10E4 /* Volunteer Hour Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Volunteer Hour Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B736871EB5647E00FF10E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B7368A1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Volunteer_Hour_Tracker.xcdatamodel; sourceTree = "<group>"; };
@@ -58,8 +61,10 @@
 		84B736861EB5647E00FF10E4 /* Volunteer Hour Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				8432827D1ECA7B320090F662 /* Volunteer Hour Tracker.entitlements */,
 				84B736871EB5647E00FF10E4 /* AppDelegate.swift */,
 				84B736901EB5647E00FF10E4 /* Main.storyboard */,
+				8442F3F91ECF376800A36492 /* CategoryTableViewController.swift */,
 				84B7369E1EB56CAC00FF10E4 /* AddTaskViewController.swift */,
 				84B736A01EB5710900FF10E4 /* ViewController.swift */,
 				84B736931EB5647E00FF10E4 /* Assets.xcassets */,
@@ -104,6 +109,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 636EH3577K;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -145,6 +155,7 @@
 			files = (
 				84B736881EB5647E00FF10E4 /* AppDelegate.swift in Sources */,
 				84B7369F1EB56CAC00FF10E4 /* AddTaskViewController.swift in Sources */,
+				8442F3FA1ECF376800A36492 /* CategoryTableViewController.swift in Sources */,
 				84B736A11EB5710900FF10E4 /* ViewController.swift in Sources */,
 				84B7368B1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld in Sources */,
 			);
@@ -269,8 +280,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Volunteer Hour Tracker/Volunteer Hour Tracker.entitlements";
 				DEVELOPMENT_TEAM = 636EH3577K;
 				INFOPLIST_FILE = "Volunteer Hour Tracker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.toledoitsolutions.Volunteer-Hour-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -282,8 +295,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Volunteer Hour Tracker/Volunteer Hour Tracker.entitlements";
 				DEVELOPMENT_TEAM = 636EH3577K;
 				INFOPLIST_FILE = "Volunteer Hour Tracker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.toledoitsolutions.Volunteer-Hour-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";

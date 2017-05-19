@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         
-        title = "Initial View Controller"
+        title = "Volunteer Events"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,8 +44,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let task = tasks[indexPath.row]
         
-        var myName = task.name
-        var timeSpent = String(task.timeSpent) + " hours"
+        
+        let myName = task.eventName
+        let timeSpent = String(task.timeSpentHours) + " hours and " + String(task.timeSpentMinutes) + " minutes"
         
         cell.eventTitleLabel?.text = myName
         cell.timeSpentLabel?.text = timeSpent
@@ -86,5 +87,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         tableView.reloadData()
+    }
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let detailViewController = segue.destination as! AddTaskViewController
+        //Change Back Button
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
     }
 }
