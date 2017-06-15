@@ -77,10 +77,13 @@ class AddTaskViewController: UITableViewController {
     @IBOutlet weak var timeStartTextField: UITextField!
     @IBOutlet weak var timeEndedTextField: UITextField!
     @IBOutlet weak var eventDateTextField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var selected = ""
 
     @IBAction func timeStartedDidBeginEditing(_ sender: UITextField) {
+        updateSaveButtonState()
+        
         selected = "a"
         toolbarInitiation()
         let datePicker = UIDatePicker()
@@ -229,15 +232,17 @@ class AddTaskViewController: UITableViewController {
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
+        
+        updateSaveButtonState()
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         // MARK: Difference in times
-        var temp4 = timeEnded.timeIntervalSince(timeStart as Date)
+        let temp4 = timeEnded.timeIntervalSince(timeStart as Date)
         print(temp4)
-        var timeSpent = secondsToHoursMinutesSeconds(seconds: Int(temp4))
+        let timeSpent = secondsToHoursMinutesSeconds(seconds: Int(temp4))
         print(timeSpent)
 
         
@@ -253,4 +258,18 @@ class AddTaskViewController: UITableViewController {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         let _ = navigationController?.popViewController(animated: true)
         }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailViewController = segue.destination as! CategoryTableViewController
+        detailViewController.selected = true
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+    }
+    
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = eventDateTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
 }

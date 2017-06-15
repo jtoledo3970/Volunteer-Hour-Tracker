@@ -61,18 +61,26 @@
 		84B736861EB5647E00FF10E4 /* Volunteer Hour Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				84FF1FA01ED2D06A002336B2 /* View Controller */,
 				8432827D1ECA7B320090F662 /* Volunteer Hour Tracker.entitlements */,
 				84B736871EB5647E00FF10E4 /* AppDelegate.swift */,
 				84B736901EB5647E00FF10E4 /* Main.storyboard */,
-				8442F3F91ECF376800A36492 /* CategoryTableViewController.swift */,
-				84B7369E1EB56CAC00FF10E4 /* AddTaskViewController.swift */,
-				84B736A01EB5710900FF10E4 /* ViewController.swift */,
 				84B736931EB5647E00FF10E4 /* Assets.xcassets */,
 				84B736951EB5647E00FF10E4 /* LaunchScreen.storyboard */,
 				84B736981EB5647E00FF10E4 /* Info.plist */,
 				84B736891EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld */,
 			);
 			path = "Volunteer Hour Tracker";
+			sourceTree = "<group>";
+		};
+		84FF1FA01ED2D06A002336B2 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8442F3F91ECF376800A36492 /* CategoryTableViewController.swift */,
+				84B7369E1EB56CAC00FF10E4 /* AddTaskViewController.swift */,
+				84B736A01EB5710900FF10E4 /* ViewController.swift */,
+			);
+			name = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
