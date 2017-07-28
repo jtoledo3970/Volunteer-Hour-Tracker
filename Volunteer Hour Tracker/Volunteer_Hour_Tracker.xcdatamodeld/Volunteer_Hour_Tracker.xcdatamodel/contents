@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Event" representedClassName="Event" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Organization" representedClassName="Organization" syncable="YES" codeGenerationType="class">
+        <attribute name="organizationName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="organization" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Organization" inverseName="organization" inverseEntity="Organization" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" codeGenerationType="class">
+        <attribute name="eventDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="organizationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeEnded" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="timeSpentHours" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeSpentMinutes" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeStart" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <userInfo/>
     </entity>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="Organization" positionX="261" positionY="252" width="128" height="73"/>
+        <element name="Task" positionX="-54" positionY="132" width="128" height="165"/>
     </elements>
 </model>
