@@ -1,0 +1,15 @@
+PODS:
+  - Eureka (3.1.0)
+  - SCLAlertView (0.7.0)
+
+DEPENDENCIES:
+  - Eureka
+  - SCLAlertView
+
+SPEC CHECKSUMS:
+  Eureka: d6725c38d0dcdceaa331d1468f75e76315715ae0
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
+
+PODFILE CHECKSUM: 91cf61f4ef5441bf37736f08d0847980da1fe0b3
+
+COCOAPODS: 1.2.1

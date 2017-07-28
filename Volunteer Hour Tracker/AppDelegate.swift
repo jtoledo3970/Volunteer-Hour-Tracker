@@ -16,6 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Bar Button Item Styling
+        UIBarButtonItem.appearance().setTitleTextAttributes(
+            [
+                NSFontAttributeName : UIFont(name: ".SFUIText-Light", size: 18)!,
+                NSForegroundColorAttributeName : UIColor.white
+            ],
+            for: .normal)
+        // UINavigationBar Styling
+        UINavigationBar.appearance().barTintColor = UIColor(red:0, green:0.479, blue:0.999, alpha:1)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: ".SFUIText-Light", size: 21)!,NSForegroundColorAttributeName: UIColor.white]
+        
+        UIToolbar.appearance().barTintColor = UIColor(red:0, green:0.479, blue:0.999, alpha:1)
+        
             return true
     }
 

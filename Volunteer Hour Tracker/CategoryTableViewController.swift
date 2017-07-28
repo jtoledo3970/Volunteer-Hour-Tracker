@@ -13,7 +13,30 @@ class CategoryTableViewCell : UITableViewCell {
     @IBOutlet weak var organizationNameLabel: UILabel!
 }
 
-class CategoryTableViewController : UITableViewController {
+class CategoryTableViewController : UITableViewController, FloatyDelegate {
+    
+    let fab = Floaty()
+    
+    func layoutFab() {
+        fab.addItem(title: "I got a title")
+        fab.addItem("I got a icon", icon: UIImage(named: "icShare"))
+        fab.addItem("titlePosition right?", icon: UIImage(named: "icShare"), titlePosition: .right) { (item) in
+            let alert = UIAlertController(title: "titlePosition right", message: "titlePosition is right", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok...", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            self.fab.close()
+        }
+        
+        fab.sticky = true
+        fab.paddingX = self.view.frame.width/6 - fab.frame.width
+        fab.paddingY = self.view.frame.height/10 - fab.frame.height/4
+        
+        fab.fabDelegate = self
+        
+        // print(tableView!.frame)
+        
+        self.view.addSubview(fab)
+    }
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -26,7 +49,25 @@ class CategoryTableViewController : UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Navigation Bar Style
+        navigationController!.navigationBar.barTintColor = UIColor(red:0, green:0.479, blue:0.999, alpha:1)
+        navigationController!.navigationBar.tintColor = UIColor.white
+        self.navigationController!.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: ".SFUIText-Light", size: 21)!,NSForegroundColorAttributeName: UIColor.white]
+        
         title = "Categories"
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(CategoryTableViewController.newAlert))
+        navigationItem.rightBarButtonItem = addButton
+    }
+    
+    func newAlert() {
+        // Add a text field
+        let alert = SCLAlertView()
+        let txt = alert.addTextField("Enter your name")
+        alert.addButton("Show Name") {
+            print("Text value: \(String(describing: txt.text))")
+        }
+        alert.showEdit("Edit View", subTitle: "This alert view shows a text box")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +95,7 @@ class CategoryTableViewController : UITableViewController {
         return cell
     }
     
-    @IBAction func testButton(_ sender: UIBarButtonItem) {
+    func testButton() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
         
@@ -131,24 +172,8 @@ class CategoryTableViewController : UITableViewController {
         tableView.reloadData()
     }
     
-    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? CategoryTableViewController, let meal = sourceViewController.meal {
-            
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing meal.
-                meals[selectedIndexPath.row] = meal
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
-            }
-            else {
-                // Add a new meal.
-                let newIndexPath = IndexPath(row: meals.count, section: 0)
-                
-                meals.append(meal)
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
-            }
-            
-            // Save the meals.
-            saveMeals()
-        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
     }
+    
 }
