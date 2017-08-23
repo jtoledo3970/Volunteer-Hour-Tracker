@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G1U-DM-anM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G1U-DM-anM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -93,6 +93,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Vo3-It-8K8" id="20L-z0-Bpp"/>
+                        <segue destination="7fK-Jg-huc" kind="show" identifier="showEventSegue" id="Z38-d7-lG8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Pa-mt-3fQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,7 +121,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nlu-hB-nbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="t3a-pc-pzv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="72"/>
+            <point key="canvasLocation" x="1844" y="73"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="umm-sC-A4I">
@@ -328,6 +329,7 @@
         <image name="Pencil-Board" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Z38-d7-lG8"/>
         <segue reference="Vrs-Ex-xJv"/>
     </inferredMetricsTieBreakers>
 </document>

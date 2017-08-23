@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Eureka.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5CCA473BF9B61FAB1DBD42FDAEB6161F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>675A114988AE198732ED4AD726408964</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF7D8BCDB778D94D08946F44F87E0EBC</key>
+		<key>7579551EC4683153B7DCBABDF8E3F71E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95CF3081EE857DA27A030407E1845060</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D386C75EFD4F03725E4EFB866B600B9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

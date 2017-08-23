@@ -3,7 +3,7 @@
 //  Volunteer Hour Tracker
 //
 //  Created by Administrator on 7/25/17.
-//  Copyright © 2017 Toledo's IT Solution's. All rights reserved.
+//  Copyright © 2017 Toledo's IT Solutions, Inc. All rights reserved.
 //
 
 import UIKit
@@ -36,7 +36,7 @@ class InformationViewController: FormViewController, MFMailComposeViewController
                 row.disabled = true
             }
             <<< LabelRow() { row in
-                row.title = "Copyright © 2017 Toledo's IT Solutions"
+                row.title = "Copyright © 2017 Toledo's IT Solutions, Inc."
             }
         
             +++ Section()

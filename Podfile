@@ -6,6 +6,7 @@ target 'Volunteer Hour Tracker' do
   use_frameworks!
 	pod 'SCLAlertView'
 	pod 'Eureka'
+	pod 'DZNEmptyDataSet'
   # Pods for Volunteer Hour Tracker
 
 end

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class VolunteerTableViewCell : UITableViewCell {
     @IBOutlet weak var eventTitleLabel: UILabel!
@@ -14,12 +15,14 @@ class VolunteerTableViewCell : UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FloatyDelegate, UITabBarDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FloatyDelegate, UITabBarDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var tasks: [Task] = []
+    var sendingIndex: Int = 0
+    var show = false
     
 //    let fab = Floaty()
 //    
@@ -46,6 +49,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // DZN Empty Dataset
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -65,6 +74,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.reloadData()
     }
     
+    // MARK: DZNEmptyDataSet
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Welcome!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Tap the button below to add your first event!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "LaunchIcon")
+    }
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
+        let str = "Add Event!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
+        performSegue(withIdentifier: "eventToNewEventSegue", sender: self)
+//        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
+//        ac.addAction(UIAlertAction(title: "Hurray", style: .default))
+//        present(ac, animated: true)
+    }
+    
+    
+    // MARK: Table View Data Set
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
@@ -100,13 +141,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func getData() {
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Task.eventDate), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        
         do {
-            tasks = try context.fetch(Task.fetchRequest())
+            tasks = try context.fetch(fetchRequest)
         }
         catch {
             print("Fetching Failed")
         }
     }
+    
+//    func getData() {
+//        let context = appDelegate.persistentContainer.viewContext
+//
+//        let fetchRequest: NSFetchRequest<Expenses> = Expenses.fetchRequest()
+//        let sort = NSSortDescriptor(key: #keyPath(Expenses.date), ascending: true)
+//        fetchRequest.sortDescriptors = [sort]
+//        do {
+//            expenses = try context.fetch(fetchRequest)
+//        } catch {
+//            print("Cannot fetch Expenses")
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -200,6 +258,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        sendingIndex = indexPath.row
+        show = true
+        performSegue(withIdentifier: "showEventSegue", sender: sendingIndex)
+    }
+    
     // Tab Bar Selection
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         //This method will be called when user changes tab.
@@ -207,11 +271,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func didPressLeftButton() {
-        performSegue(withIdentifier: "eventToDetailSegue", sender: (Any).self)
+        performSegue(withIdentifier: "eventToDetailSegue", sender: self)
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepareForSegue")
         let detailViewController = segue.destination as! AddEventFormViewController
+        if (segue.identifier == "eventToNewEventSegue") {
+            detailViewController.new = true
+        }
+        if (segue.identifier == "showEventSegue") {
+            print("Segue has begun for show")
+            detailViewController.index = sendingIndex
+            detailViewController.show = true
+        }
         //Change Back Button
         let backItem = UIBarButtonItem()
         backItem.title = ""

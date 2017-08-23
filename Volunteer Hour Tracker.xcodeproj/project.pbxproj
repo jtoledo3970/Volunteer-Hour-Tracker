@@ -11,6 +11,7 @@
 		847C23851F21D700003F0E69 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C23831F21D700003F0E69 /* SCLAlertView.swift */; };
 		847C23861F21D700003F0E69 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C23841F21D700003F0E69 /* SCLExtensions.swift */; };
 		847C23881F21DC8B003F0E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847C23871F21DC8B003F0E69 /* Images.xcassets */; };
+		8488A7891F2D592B007B9CCB /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488A7881F2D592B007B9CCB /* UIScrollView+EmptyDataSet.m */; };
 		848F77111F2AD67600C910A7 /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 848F770F1F2AD67600C910A7 /* terms.html */; };
 		848F77121F2AD67600C910A7 /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 848F77101F2AD67600C910A7 /* styles.css */; };
 		848F77161F2B005400C910A7 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 848F77151F2B005400C910A7 /* privacy.html */; };
@@ -45,6 +46,9 @@
 		847C23831F21D700003F0E69 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		847C23841F21D700003F0E69 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		847C23871F21DC8B003F0E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8488A7861F2D592A007B9CCB /* Volunteer Hour Tracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Volunteer Hour Tracker-Bridging-Header.h"; sourceTree = "<group>"; };
+		8488A7871F2D592B007B9CCB /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		8488A7881F2D592B007B9CCB /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		848F770F1F2AD67600C910A7 /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
 		848F77101F2AD67600C910A7 /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		848F77151F2B005400C910A7 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
@@ -169,10 +173,13 @@
 				84B736981EB5647E00FF10E4 /* Info.plist */,
 				84B736891EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld */,
 				84CD96411F14ABA0007793CE /* Icons.xcassets */,
+				8488A7871F2D592B007B9CCB /* UIScrollView+EmptyDataSet.h */,
+				8488A7881F2D592B007B9CCB /* UIScrollView+EmptyDataSet.m */,
 				848F77191F2B078E00C910A7 /* Floaty */,
 				848F77131F2AD67900C910A7 /* HTML */,
 				84CD963F1F14AB93007793CE /* Sources */,
 				847C23871F21DC8B003F0E69 /* Images.xcassets */,
+				8488A7861F2D592A007B9CCB /* Volunteer Hour Tracker-Bridging-Header.h */,
 			);
 			path = "Volunteer Hour Tracker";
 			sourceTree = "<group>";
@@ -226,6 +233,7 @@
 					84B736831EB5647E00FF10E4 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 636EH3577K;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -345,6 +353,7 @@
 				84D92E781F254D7F00D5800D /* TabBarController.swift in Sources */,
 				847C23851F21D700003F0E69 /* SCLAlertView.swift in Sources */,
 				84B7368B1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld in Sources */,
+				8488A7891F2D592B007B9CCB /* UIScrollView+EmptyDataSet.m in Sources */,
 				84F2F9EA1F272CD4007EDD19 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +478,7 @@
 			baseConfigurationReference = 9890946FC1EAB795F4DD1618 /* Pods-Volunteer Hour Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Volunteer Hour Tracker/Volunteer Hour Tracker.entitlements";
 				DEVELOPMENT_TEAM = 636EH3577K;
 				INFOPLIST_FILE = "Volunteer Hour Tracker/Info.plist";
@@ -476,6 +486,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.toledositsolutions.Volunteer-Hour-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Volunteer Hour Tracker/Volunteer Hour Tracker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -485,6 +497,7 @@
 			baseConfigurationReference = 5ECA5D0DCC0855EF564BDD17 /* Pods-Volunteer Hour Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Volunteer Hour Tracker/Volunteer Hour Tracker.entitlements";
 				DEVELOPMENT_TEAM = 636EH3577K;
 				INFOPLIST_FILE = "Volunteer Hour Tracker/Info.plist";
@@ -492,6 +505,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.toledositsolutions.Volunteer-Hour-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Volunteer Hour Tracker/Volunteer Hour Tracker-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

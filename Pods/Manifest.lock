@@ -1,15 +1,18 @@
 PODS:
+  - DZNEmptyDataSet (1.8.1)
   - Eureka (3.1.0)
   - SCLAlertView (0.7.0)
 
 DEPENDENCIES:
+  - DZNEmptyDataSet
   - Eureka
   - SCLAlertView
 
 SPEC CHECKSUMS:
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Eureka: d6725c38d0dcdceaa331d1468f75e76315715ae0
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
 
-PODFILE CHECKSUM: 91cf61f4ef5441bf37736f08d0847980da1fe0b3
+PODFILE CHECKSUM: da2acd86a7863a6991423aba1c61aa39ea8c0c2e
 
 COCOAPODS: 1.2.1
