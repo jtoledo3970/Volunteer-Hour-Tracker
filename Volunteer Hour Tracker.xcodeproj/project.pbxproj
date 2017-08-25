@@ -53,6 +53,7 @@
 		848F77101F2AD67600C910A7 /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		848F77151F2B005400C910A7 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		848F77171F2B076C00C910A7 /* disclaimer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = disclaimer.html; sourceTree = "<group>"; };
+		84AC2D421F4F664A00BF9922 /* Volunteer_Hour_Tracker v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Volunteer_Hour_Tracker v2.xcdatamodel"; sourceTree = "<group>"; };
 		84B736841EB5647E00FF10E4 /* Volunteer Hour Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Volunteer Hour Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B736871EB5647E00FF10E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B7368A1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Volunteer_Hour_Tracker.xcdatamodel; sourceTree = "<group>"; };
@@ -537,9 +538,10 @@
 		84B736891EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				84AC2D421F4F664A00BF9922 /* Volunteer_Hour_Tracker v2.xcdatamodel */,
 				84B7368A1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodel */,
 			);
-			currentVersion = 84B7368A1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodel */;
+			currentVersion = 84AC2D421F4F664A00BF9922 /* Volunteer_Hour_Tracker v2.xcdatamodel */;
 			path = Volunteer_Hour_Tracker.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

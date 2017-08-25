@@ -104,7 +104,7 @@ class InformationViewController: FormViewController, MFMailComposeViewController
     }
 }
 
-class FeedbackViewController: FormViewController {
+class FeedbackViewController: FormViewController, MFMailComposeViewControllerDelegate {
     
     var finalBody = ""
     var selection = ""
@@ -213,7 +213,7 @@ class FeedbackViewController: FormViewController {
                                 self?.finalBody = value!
                             }
                             
-                            self?.sendMail()
+                            self!.sendMail()
                         } else if (value == nil){
                             SCLAlertView().showWarning("You forgot something", subTitle: "Please enter data into every field. Thank you.")
                         }
@@ -232,7 +232,7 @@ class FeedbackViewController: FormViewController {
         performSegue(withIdentifier: "LegalSegue", sender: self)
     }
     
-    @IBAction func sendMail() {
+    func sendMail() {
 //        var finalBody = ""
         let subjectText = "Feedback for Volunteer Hour Tracker"
 //        if (specs == true) {
@@ -241,23 +241,22 @@ class FeedbackViewController: FormViewController {
 //            finalBody = Body
 //        }
         if MFMailComposeViewController.canSendMail() {
+            print("Can send mail")
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
             mail.setSubject(subjectText)
             mail.setToRecipients(["jose@toledositsolutions.com"])
             mail.setMessageBody(finalBody, isHTML: false)
             
-            present(mail, animated: true)
+            self.present(mail, animated: true, completion: nil)
         } else {
             // show failure alert
             print("cannot send mail")
         }
     }
-
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-
-        controller.dismiss(animated: true, completion: nil)
-        
+    
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        print("controller reached")
         switch (result.rawValue) {
 //        case .cancelled:
             case MFMailComposeResult.cancelled.rawValue:
@@ -276,6 +275,7 @@ class FeedbackViewController: FormViewController {
                 break
         }
         
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 
