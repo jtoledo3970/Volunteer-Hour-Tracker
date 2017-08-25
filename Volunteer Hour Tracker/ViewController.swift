@@ -66,7 +66,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
 //        layoutFab()
         
-//        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.tableView.setEditing(editing, animated: animated)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,7 +124,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         
         let myName = task.eventName
-        let timeSpent = String(task.timeSpentHours) + " hours and " + String(task.timeSpentMinutes) + " minutes"
+        let timeSpent = String(task.timeSpentHours) + " hours " + String(task.timeSpentMinutes) + " minutes"
         let date = task.eventDate
         let stringDate = date?.dateToString()
         

@@ -331,8 +331,8 @@ class AddEventFormViewController: FormViewController {
             tasks[index].eventDate = valuesDictionary["eventDate"] as! NSDate
             tasks[index].timeStart = timeStart as! NSDate
             tasks[index].timeEnded = timeEnded as! NSDate
-            tasks[index].timeSpentHours = Double(timeSpent.0)
-            tasks[index].timeSpentMinutes = Double(timeSpent.1)
+            tasks[index].timeSpentHours = Int16(timeSpent.0)
+            tasks[index].timeSpentMinutes = Int16(timeSpent.1)
             tasks[index].eventDescription = valuesDictionary["description"] as? String
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -363,8 +363,8 @@ class AddEventFormViewController: FormViewController {
             task.eventDate = valuesDictionary["eventDate"] as! NSDate
             task.timeStart = timeStart as! NSDate
             task.timeEnded = timeEnded as! NSDate
-            task.timeSpentHours = Double(timeSpent.0)
-            task.timeSpentMinutes = Double(timeSpent.1)
+            task.timeSpentHours = Int16(timeSpent.0)
+            task.timeSpentMinutes = Int16(timeSpent.1)
             task.eventDescription = valuesDictionary["description"] as? String
             
             
