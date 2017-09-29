@@ -3,7 +3,7 @@
 //  DoD Ranks
 //
 //  Created by Administrator on 6/8/16.
-//  Copyright © 2016 AJProductions. All rights reserved.
+//  Copyright © 2016-Present Toledo's IT Solutions, Inc. All rights reserved.
 //
 
 import UIKit
