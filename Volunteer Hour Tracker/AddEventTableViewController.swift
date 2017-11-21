@@ -309,8 +309,11 @@ class AddEventFormViewController: FormViewController {
         incomingEventDate = tasks[index].eventDate! as Date
         incomingStartTime = tasks[index].timeStart! as Date
         incomingEndTime = tasks[index].timeEnded! as Date
-        incomingDescription = tasks[index].eventDescription!
-
+        if (tasks[index].eventDescription == nil) {
+            incomingDescription = " "
+        } else {
+            incomingDescription = tasks[index].eventDescription!
+        }
     }
     
     func updateInformation() {
@@ -334,6 +337,7 @@ class AddEventFormViewController: FormViewController {
             tasks[index].timeSpentHours = Int16(timeSpent.0)
             tasks[index].timeSpentMinutes = Int16(timeSpent.1)
             tasks[index].eventDescription = valuesDictionary["description"] as? String
+
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             edit = false

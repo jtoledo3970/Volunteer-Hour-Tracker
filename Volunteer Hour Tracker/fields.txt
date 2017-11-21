@@ -1,0 +1,7 @@
+#ITEMS#
+  #EVENT_NAME#
+  #DATE#
+  #START#
+  #END#
+  #DESCRIPTION#
+#TOTAL_AMOUNT#
