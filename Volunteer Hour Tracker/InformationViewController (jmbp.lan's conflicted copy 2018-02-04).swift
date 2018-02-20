@@ -44,14 +44,12 @@ class InformationViewController: FormViewController, MFMailComposeViewController
                 $0.title = $0.tag
                 $0.presentationMode = .segueName(segueName: "FeedbackViewControllerSegue", onDismiss: nil)
             }
-            
-//            +++ Section()
-//            <<< ButtonRow("Share this App") {
-//                $0.title = $0.tag
-//            }
-//                .onCellSelection { [weak self] (cell, row) in
-//                    
-//            }
+            <<< ButtonRow("Share This App") {
+                $0.title = $0.tag
+                }
+                .onCellSelection { [weak self] (cell, row) in
+                    self?.share()
+            }
         
             +++ Section("Legal")
             <<< ButtonRow("Terms of Use") {
@@ -76,6 +74,18 @@ class InformationViewController: FormViewController, MFMailComposeViewController
                 self?.selection = "disclaimer"
                 self?.move()
             }
+    }
+    
+    func share() {
+        let message = "Check out this cool Volunteer Hour Tracking app"
+        if let link = NSURL(string: shareLink)
+        {
+            let objectsToShare = [message,link] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            //            activityVC.popoverPresentationController?.sourceView = self.sharebutton
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
     
     func move() {
