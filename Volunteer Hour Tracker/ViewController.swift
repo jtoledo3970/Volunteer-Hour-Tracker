@@ -24,6 +24,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var sendingIndex: Int = 0
     var show = false
     
+    var eventInfo = [[String : String]]()
+    var event = [String:String]()
+    var pdfComposer : PDFComposer!
+    var HTMLContent : String!
+    var total = "0"
+
+    
 //    let fab = Floaty()
 //    
 //    func layoutFab() {
@@ -156,7 +163,43 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         catch {
             print("Fetching Failed")
         }
+        
+        print(tasks.count)
+        
+        for i in 0..<tasks.count {
+            print(tasks[i].eventName)
+        }
+//        loadToDictionary()
     }
+//
+//    func loadToDictionary() {
+//        print(tasks.count)
+//        eventInfo.removeAll()
+//        for i in 0..<tasks.count {
+//            event.removeAll()
+//
+//            event["name"] = tasks[i].eventName
+//            event["date"] = tasks[i].eventDate?.dateToString()
+//            event["start"] = tasks[i].timeStart?.timeToString()
+//            event["end"] = tasks[i].timeEnded?.timeToString()
+//            event["description"] = tasks[i].eventDescription
+//
+//            eventInfo.append(event)
+//        }
+//        print(tasks)
+//        print(eventInfo.count)
+//        createEventAsHTML()
+//    }
+//
+//    func createEventAsHTML() {
+//        pdfComposer = PDFComposer()
+//        if let eventHTML = pdfComposer.renderInvoice(items: eventInfo, totalAmount: total) {
+//            HTMLContent = eventHTML
+//        } else {
+//            print("no load fam")
+//        }
+//        pdfComposer.exportHTMLContentToPDF(HTMLContent: HTMLContent)
+//    }
     
 //    func getData() {
 //        let context = appDelegate.persistentContainer.viewContext
@@ -289,6 +332,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             print("Segue has begun for show")
             detailViewController.index = sendingIndex
             detailViewController.show = true
+            print(sendingIndex)
         }
         //Change Back Button
         let backItem = UIBarButtonItem()

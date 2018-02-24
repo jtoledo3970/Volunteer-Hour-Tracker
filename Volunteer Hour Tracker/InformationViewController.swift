@@ -282,7 +282,7 @@ class FeedbackViewController: FormViewController, MFMailComposeViewControllerDel
 class LegalViewController: UIViewController {
     @IBOutlet weak var webView:UIWebView!
     
-    var selection = ""
+    var selection = "privacy"
     
     override func viewDidLoad() {
         title = "Legal"

@@ -85,6 +85,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         })
         return container
     }()
+    
+    // MARK: Custom Methods
+    
+    class func getAppDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    func getDocDir() -> String {
+        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    }
 
     // MARK: - Core Data Saving support
 

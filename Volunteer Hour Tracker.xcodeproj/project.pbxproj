@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84087E3C1FBE835B001442A1 /* PDFComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84087E3B1FBE835B001442A1 /* PDFComposer.swift */; };
+		84087E441FBECA63001442A1 /* CustomPrintPageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84087E431FBECA63001442A1 /* CustomPrintPageRenderer.swift */; };
+		84087E461FC10C1A001442A1 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84087E451FC10C1A001442A1 /* ExportViewController.swift */; };
+		84087E4D1FC1513E001442A1 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84087E471FC1513D001442A1 /* icon2.png */; };
+		84087E4E1FC1513E001442A1 /* last_item.html in Resources */ = {isa = PBXBuildFile; fileRef = 84087E481FC1513D001442A1 /* last_item.html */; };
+		84087E4F1FC1513E001442A1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84087E491FC1513E001442A1 /* icon.png */; };
+		84087E501FC1513E001442A1 /* fields.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84087E4A1FC1513E001442A1 /* fields.txt */; };
+		84087E511FC1513E001442A1 /* single_item.html in Resources */ = {isa = PBXBuildFile; fileRef = 84087E4B1FC1513E001442A1 /* single_item.html */; };
+		84087E521FC1513E001442A1 /* eventList.html in Resources */ = {isa = PBXBuildFile; fileRef = 84087E4C1FC1513E001442A1 /* eventList.html */; };
 		8442F3FA1ECF376800A36492 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442F3F91ECF376800A36492 /* CategoryTableViewController.swift */; };
 		847C23851F21D700003F0E69 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C23831F21D700003F0E69 /* SCLAlertView.swift */; };
 		847C23861F21D700003F0E69 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C23841F21D700003F0E69 /* SCLExtensions.swift */; };
@@ -41,6 +50,15 @@
 /* Begin PBXFileReference section */
 		317C7ED02A87DA9872F27481 /* Pods_Volunteer_Hour_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Volunteer_Hour_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECA5D0DCC0855EF564BDD17 /* Pods-Volunteer Hour Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Volunteer Hour Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Volunteer Hour Tracker/Pods-Volunteer Hour Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		84087E3B1FBE835B001442A1 /* PDFComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFComposer.swift; sourceTree = "<group>"; };
+		84087E431FBECA63001442A1 /* CustomPrintPageRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrintPageRenderer.swift; sourceTree = "<group>"; };
+		84087E451FC10C1A001442A1 /* ExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
+		84087E471FC1513D001442A1 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		84087E481FC1513D001442A1 /* last_item.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = last_item.html; sourceTree = "<group>"; };
+		84087E491FC1513E001442A1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		84087E4A1FC1513E001442A1 /* fields.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fields.txt; sourceTree = "<group>"; };
+		84087E4B1FC1513E001442A1 /* single_item.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = single_item.html; sourceTree = "<group>"; };
+		84087E4C1FC1513E001442A1 /* eventList.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = eventList.html; sourceTree = "<group>"; };
 		8432827D1ECA7B320090F662 /* Volunteer Hour Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Volunteer Hour Tracker.entitlements"; sourceTree = "<group>"; };
 		8442F3F91ECF376800A36492 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		847C23831F21D700003F0E69 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
@@ -111,6 +129,12 @@
 		848F77131F2AD67900C910A7 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				84087E4C1FC1513E001442A1 /* eventList.html */,
+				84087E4A1FC1513E001442A1 /* fields.txt */,
+				84087E491FC1513E001442A1 /* icon.png */,
+				84087E471FC1513D001442A1 /* icon2.png */,
+				84087E481FC1513D001442A1 /* last_item.html */,
+				84087E4B1FC1513E001442A1 /* single_item.html */,
 				848F77171F2B076C00C910A7 /* disclaimer.html */,
 				848F77151F2B005400C910A7 /* privacy.html */,
 				848F770F1F2AD67600C910A7 /* terms.html */,
@@ -169,17 +193,17 @@
 				8432827D1ECA7B320090F662 /* Volunteer Hour Tracker.entitlements */,
 				84B736871EB5647E00FF10E4 /* AppDelegate.swift */,
 				84B736901EB5647E00FF10E4 /* Main.storyboard */,
-				84B736931EB5647E00FF10E4 /* Assets.xcassets */,
 				84B736951EB5647E00FF10E4 /* LaunchScreen.storyboard */,
+				84B736931EB5647E00FF10E4 /* Assets.xcassets */,
+				847C23871F21DC8B003F0E69 /* Images.xcassets */,
+				84CD96411F14ABA0007793CE /* Icons.xcassets */,
 				84B736981EB5647E00FF10E4 /* Info.plist */,
 				84B736891EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld */,
-				84CD96411F14ABA0007793CE /* Icons.xcassets */,
 				8488A7871F2D592B007B9CCB /* UIScrollView+EmptyDataSet.h */,
 				8488A7881F2D592B007B9CCB /* UIScrollView+EmptyDataSet.m */,
 				848F77191F2B078E00C910A7 /* Floaty */,
 				848F77131F2AD67900C910A7 /* HTML */,
 				84CD963F1F14AB93007793CE /* Sources */,
-				847C23871F21DC8B003F0E69 /* Images.xcassets */,
 				8488A7861F2D592A007B9CCB /* Volunteer Hour Tracker-Bridging-Header.h */,
 			);
 			path = "Volunteer Hour Tracker";
@@ -192,6 +216,9 @@
 				84B7369E1EB56CAC00FF10E4 /* AddTaskViewController.swift */,
 				84F2F9E61F2689AD007EDD19 /* AddEventTableViewController.swift */,
 				84F2F9E91F272CD4007EDD19 /* InformationViewController.swift */,
+				84087E3B1FBE835B001442A1 /* PDFComposer.swift */,
+				84087E451FC10C1A001442A1 /* ExportViewController.swift */,
+				84087E431FBECA63001442A1 /* CustomPrintPageRenderer.swift */,
 				84B736A01EB5710900FF10E4 /* ViewController.swift */,
 				84D92E771F254D7F00D5800D /* TabBarController.swift */,
 			);
@@ -228,7 +255,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Toledo's IT Solution's";
 				TargetAttributes = {
 					84B736831EB5647E00FF10E4 = {
@@ -270,16 +297,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84087E4F1FC1513E001442A1 /* icon.png in Resources */,
+				84087E501FC1513E001442A1 /* fields.txt in Resources */,
 				84B736971EB5647E00FF10E4 /* LaunchScreen.storyboard in Resources */,
 				848F77181F2B076C00C910A7 /* disclaimer.html in Resources */,
 				848F77161F2B005400C910A7 /* privacy.html in Resources */,
+				84087E4E1FC1513E001442A1 /* last_item.html in Resources */,
 				84B736941EB5647E00FF10E4 /* Assets.xcassets in Resources */,
 				84B736921EB5647E00FF10E4 /* Main.storyboard in Resources */,
 				848F77111F2AD67600C910A7 /* terms.html in Resources */,
 				847C23881F21DC8B003F0E69 /* Images.xcassets in Resources */,
+				84087E4D1FC1513E001442A1 /* icon2.png in Resources */,
 				848F77121F2AD67600C910A7 /* styles.css in Resources */,
 				84CD96401F14AB93007793CE /* Sources in Resources */,
 				84CD96421F14ABA0007793CE /* Icons.xcassets in Resources */,
+				84087E511FC1513E001442A1 /* single_item.html in Resources */,
+				84087E521FC1513E001442A1 /* eventList.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,13 +340,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Volunteer Hour Tracker-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		13EEB77C3423F7955260EF4A /* [CP] Embed Pods Frameworks */ = {
@@ -322,9 +358,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Volunteer Hour Tracker/Pods-Volunteer Hour Tracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/Onboard/Onboard.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Onboard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -341,12 +386,15 @@
 				84F2F9EC1F274ABB007EDD19 /* DeviceExtension.swift in Sources */,
 				84CD964F1F14AC76007793CE /* FloatyWindow.swift in Sources */,
 				84CD964D1F14AC76007793CE /* FloatyManager.swift in Sources */,
+				84087E3C1FBE835B001442A1 /* PDFComposer.swift in Sources */,
 				84CD964A1F14AC76007793CE /* Floaty.swift in Sources */,
 				84CD964C1F14AC76007793CE /* FloatyItem.swift in Sources */,
 				84CD964E1F14AC76007793CE /* FloatyViewController.swift in Sources */,
 				84B736881EB5647E00FF10E4 /* AppDelegate.swift in Sources */,
+				84087E441FBECA63001442A1 /* CustomPrintPageRenderer.swift in Sources */,
 				84B7369F1EB56CAC00FF10E4 /* AddTaskViewController.swift in Sources */,
 				8442F3FA1ECF376800A36492 /* CategoryTableViewController.swift in Sources */,
+				84087E461FC10C1A001442A1 /* ExportViewController.swift in Sources */,
 				84CD964B1F14AC76007793CE /* FloatyDelegate.swift in Sources */,
 				84B736A11EB5710900FF10E4 /* ViewController.swift in Sources */,
 				84F2F9E71F2689AD007EDD19 /* AddEventTableViewController.swift in Sources */,
@@ -390,7 +438,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -398,7 +448,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -440,7 +494,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -448,7 +504,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
