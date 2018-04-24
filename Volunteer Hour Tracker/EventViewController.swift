@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EventViewController.swift
 //  Volunteer Hour Tracker
 //
 //  Created by Jose Toledo on 4/29/17.
@@ -13,6 +13,10 @@ class VolunteerTableViewCell : UITableViewCell {
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var timeSpentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+}
+
+class TotalTableViewCell : UITableViewCell {
+    @IBOutlet weak var totalLabel: UILabel!
 }
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FloatyDelegate, UITabBarDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
@@ -29,6 +33,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var pdfComposer : PDFComposer!
     var HTMLContent : String!
     var total = "0"
+    
+//    Time Vars
+    var tempHour = 0
+    var tempHourR = 0
+    var tempMin = 0
+    var finalTotalHours = 0
+    var finalTotalMin = 0
+    
 
     
 //    let fab = Floaty()
@@ -57,6 +69,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getData()
+        
         // DZN Empty Dataset
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
@@ -68,9 +82,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Left Bar Button Item
 //        let leftBar = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(didPressLeftButton))
 //        navigationItem.leftBarButtonItem = leftBar
+        if (finalTotalHours == 0 && finalTotalMin == 0) {
+            title = "Volunteer Events"
+        } else {
+            title = "Total: \(finalTotalHours) Hours and \(finalTotalMin) Minutes)"
+        }
         
-        title = "Volunteer Events"
-        
+    
 //        layoutFab()
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem
@@ -167,9 +185,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print(tasks.count)
         
         for i in 0..<tasks.count {
-            print(tasks[i].eventName)
+            print(tasks[i].eventName!)
+            tempHour += Int(tasks[i].timeSpentHours)
+            tempMin += Int(tasks[i].timeSpentMinutes)
         }
-//        loadToDictionary()
+        finalTime()
     }
 //
 //    func loadToDictionary() {
@@ -310,6 +330,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         sendingIndex = indexPath.row
         show = true
         performSegue(withIdentifier: "showEventSegue", sender: sendingIndex)
+    }
+    
+//    Time Functions
+    func finalTime() {
+        finalTotalHours = (tempMin / 60) + tempHour
+        finalTotalMin = tempMin % 60
     }
     
     // Tab Bar Selection

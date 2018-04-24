@@ -25,13 +25,14 @@
 		848F77121F2AD67600C910A7 /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 848F77101F2AD67600C910A7 /* styles.css */; };
 		848F77161F2B005400C910A7 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 848F77151F2B005400C910A7 /* privacy.html */; };
 		848F77181F2B076C00C910A7 /* disclaimer.html in Resources */ = {isa = PBXBuildFile; fileRef = 848F77171F2B076C00C910A7 /* disclaimer.html */; };
+		849A2A7B2055F4EA005B8DEF /* StatsFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A2A7A2055F4EA005B8DEF /* StatsFormViewController.swift */; };
 		84B736881EB5647E00FF10E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B736871EB5647E00FF10E4 /* AppDelegate.swift */; };
 		84B7368B1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84B736891EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld */; };
 		84B736921EB5647E00FF10E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B736901EB5647E00FF10E4 /* Main.storyboard */; };
 		84B736941EB5647E00FF10E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B736931EB5647E00FF10E4 /* Assets.xcassets */; };
 		84B736971EB5647E00FF10E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B736951EB5647E00FF10E4 /* LaunchScreen.storyboard */; };
 		84B7369F1EB56CAC00FF10E4 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7369E1EB56CAC00FF10E4 /* AddTaskViewController.swift */; };
-		84B736A11EB5710900FF10E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B736A01EB5710900FF10E4 /* ViewController.swift */; };
+		84B736A11EB5710900FF10E4 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B736A01EB5710900FF10E4 /* EventViewController.swift */; };
 		84CD96401F14AB93007793CE /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 84CD963F1F14AB93007793CE /* Sources */; };
 		84CD96421F14ABA0007793CE /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84CD96411F14ABA0007793CE /* Icons.xcassets */; };
 		84CD964A1F14AC76007793CE /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CD96441F14AC76007793CE /* Floaty.swift */; };
@@ -71,6 +72,7 @@
 		848F77101F2AD67600C910A7 /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		848F77151F2B005400C910A7 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		848F77171F2B076C00C910A7 /* disclaimer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = disclaimer.html; sourceTree = "<group>"; };
+		849A2A7A2055F4EA005B8DEF /* StatsFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFormViewController.swift; sourceTree = "<group>"; };
 		84AC2D421F4F664A00BF9922 /* Volunteer_Hour_Tracker v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Volunteer_Hour_Tracker v2.xcdatamodel"; sourceTree = "<group>"; };
 		84B736841EB5647E00FF10E4 /* Volunteer Hour Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Volunteer Hour Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B736871EB5647E00FF10E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +82,7 @@
 		84B736961EB5647E00FF10E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84B736981EB5647E00FF10E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B7369E1EB56CAC00FF10E4 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
-		84B736A01EB5710900FF10E4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84B736A01EB5710900FF10E4 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		84CD963F1F14AB93007793CE /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
 		84CD96411F14ABA0007793CE /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		84CD96431F14AC76007793CE /* Floaty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Floaty.h; path = Sources/Floaty.h; sourceTree = "<group>"; };
@@ -218,8 +220,9 @@
 				84F2F9E91F272CD4007EDD19 /* InformationViewController.swift */,
 				84087E3B1FBE835B001442A1 /* PDFComposer.swift */,
 				84087E451FC10C1A001442A1 /* ExportViewController.swift */,
+				849A2A7A2055F4EA005B8DEF /* StatsFormViewController.swift */,
 				84087E431FBECA63001442A1 /* CustomPrintPageRenderer.swift */,
-				84B736A01EB5710900FF10E4 /* ViewController.swift */,
+				84B736A01EB5710900FF10E4 /* EventViewController.swift */,
 				84D92E771F254D7F00D5800D /* TabBarController.swift */,
 			);
 			name = "View Controller";
@@ -391,12 +394,13 @@
 				84CD964C1F14AC76007793CE /* FloatyItem.swift in Sources */,
 				84CD964E1F14AC76007793CE /* FloatyViewController.swift in Sources */,
 				84B736881EB5647E00FF10E4 /* AppDelegate.swift in Sources */,
+				849A2A7B2055F4EA005B8DEF /* StatsFormViewController.swift in Sources */,
 				84087E441FBECA63001442A1 /* CustomPrintPageRenderer.swift in Sources */,
 				84B7369F1EB56CAC00FF10E4 /* AddTaskViewController.swift in Sources */,
 				8442F3FA1ECF376800A36492 /* CategoryTableViewController.swift in Sources */,
 				84087E461FC10C1A001442A1 /* ExportViewController.swift in Sources */,
 				84CD964B1F14AC76007793CE /* FloatyDelegate.swift in Sources */,
-				84B736A11EB5710900FF10E4 /* ViewController.swift in Sources */,
+				84B736A11EB5710900FF10E4 /* EventViewController.swift in Sources */,
 				84F2F9E71F2689AD007EDD19 /* AddEventTableViewController.swift in Sources */,
 				847C23861F21D700003F0E69 /* SCLExtensions.swift in Sources */,
 				84D92E781F254D7F00D5800D /* TabBarController.swift in Sources */,
