@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G1U-DM-anM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G1U-DM-anM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,21 +25,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="pag-Jf-NFt" customClass="VolunteerTableViewCell" customModule="Volunteer_Hour_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="60" id="pag-Jf-NFt" customClass="VolunteerTableViewCell" customModule="Volunteer_Hour_Tracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pag-Jf-NFt" id="kTh-3w-H4E">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JG-pq-Gh6">
-                                                    <rect key="frame" x="316" y="11.5" width="36" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KBw-Hb-B7x">
-                                                    <rect key="frame" x="15" y="4" width="44" height="35"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KBw-Hb-B7x">
+                                                    <rect key="frame" x="15" y="10" width="44" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-ug-xsh">
                                                             <rect key="frame" x="0.0" y="0.0" width="44" height="20.5"/>
@@ -49,45 +42,31 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRm-xR-VKo">
-                                                            <rect key="frame" x="0.0" y="20.5" width="44" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="25.5" width="44" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JG-pq-Gh6">
+                                                    <rect key="frame" x="333.5" y="36" width="26.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="KBw-Hb-B7x" firstAttribute="centerY" secondItem="kTh-3w-H4E" secondAttribute="centerY" id="3hN-F0-62k"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="4JG-pq-Gh6" secondAttribute="trailing" constant="8" id="Q9R-gr-eYp"/>
+                                                <constraint firstAttribute="bottom" secondItem="4JG-pq-Gh6" secondAttribute="bottom" constant="9" id="Cvb-iT-5Wj"/>
+                                                <constraint firstAttribute="trailing" secondItem="4JG-pq-Gh6" secondAttribute="trailing" constant="15" id="Gy0-79-bqe"/>
                                                 <constraint firstItem="KBw-Hb-B7x" firstAttribute="leading" secondItem="kTh-3w-H4E" secondAttribute="leading" constant="15" id="aKn-lW-rBu"/>
-                                                <constraint firstItem="4JG-pq-Gh6" firstAttribute="centerY" secondItem="kTh-3w-H4E" secondAttribute="centerY" id="lxC-6d-13p"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="4JG-pq-Gh6" id="JRg-eZ-siA"/>
                                             <outlet property="eventTitleLabel" destination="Cfu-ug-xsh" id="3vV-cV-rX1"/>
                                             <outlet property="timeSpentLabel" destination="HRm-xR-VKo" id="9tY-pe-lT9"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TotalCell" textLabel="GYF-YQ-hU8" rowHeight="50" style="IBUITableViewCellStyleDefault" id="TeA-ON-gJH" customClass="TotalTableViewCell" customModule="Volunteer_Hour_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TeA-ON-gJH" id="aNs-oi-yjc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GYF-YQ-hU8">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="49.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="totalLabel" destination="GYF-YQ-hU8" id="60G-fQ-2ki"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -156,7 +135,6 @@
                     <connections>
                         <segue destination="qwF-dF-jn0" kind="relationship" relationship="viewControllers" id="UlR-0B-AME"/>
                         <segue destination="9aY-Jf-cci" kind="relationship" relationship="viewControllers" id="uFJ-WA-fGw"/>
-                        <segue destination="mPs-3N-e9b" kind="relationship" relationship="viewControllers" id="8Cr-JP-e94"/>
                         <segue destination="Dzg-Qw-pgO" kind="relationship" relationship="viewControllers" id="u3d-4f-zwo"/>
                     </connections>
                 </tabBarController>

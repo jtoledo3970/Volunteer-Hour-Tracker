@@ -25,6 +25,8 @@
 		848F77121F2AD67600C910A7 /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 848F77101F2AD67600C910A7 /* styles.css */; };
 		848F77161F2B005400C910A7 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 848F77151F2B005400C910A7 /* privacy.html */; };
 		848F77181F2B076C00C910A7 /* disclaimer.html in Resources */ = {isa = PBXBuildFile; fileRef = 848F77171F2B076C00C910A7 /* disclaimer.html */; };
+		8493A3052090069F00D58971 /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8493A3042090069F00D58971 /* bootstrap.min.css */; };
+		8493A307209007AE00D58971 /* libraries.html in Resources */ = {isa = PBXBuildFile; fileRef = 8493A306209007AE00D58971 /* libraries.html */; };
 		849A2A7B2055F4EA005B8DEF /* StatsFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A2A7A2055F4EA005B8DEF /* StatsFormViewController.swift */; };
 		84B736881EB5647E00FF10E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B736871EB5647E00FF10E4 /* AppDelegate.swift */; };
 		84B7368B1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84B736891EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld */; };
@@ -72,6 +74,8 @@
 		848F77101F2AD67600C910A7 /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		848F77151F2B005400C910A7 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		848F77171F2B076C00C910A7 /* disclaimer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = disclaimer.html; sourceTree = "<group>"; };
+		8493A3042090069F00D58971 /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.min.css; sourceTree = "<group>"; };
+		8493A306209007AE00D58971 /* libraries.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = libraries.html; sourceTree = "<group>"; };
 		849A2A7A2055F4EA005B8DEF /* StatsFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFormViewController.swift; sourceTree = "<group>"; };
 		84AC2D421F4F664A00BF9922 /* Volunteer_Hour_Tracker v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Volunteer_Hour_Tracker v2.xcdatamodel"; sourceTree = "<group>"; };
 		84B736841EB5647E00FF10E4 /* Volunteer Hour Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Volunteer Hour Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,11 +135,13 @@
 		848F77131F2AD67900C910A7 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				8493A3042090069F00D58971 /* bootstrap.min.css */,
 				84087E4C1FC1513E001442A1 /* eventList.html */,
 				84087E4A1FC1513E001442A1 /* fields.txt */,
 				84087E491FC1513E001442A1 /* icon.png */,
 				84087E471FC1513D001442A1 /* icon2.png */,
 				84087E481FC1513D001442A1 /* last_item.html */,
+				8493A306209007AE00D58971 /* libraries.html */,
 				84087E4B1FC1513E001442A1 /* single_item.html */,
 				848F77171F2B076C00C910A7 /* disclaimer.html */,
 				848F77151F2B005400C910A7 /* privacy.html */,
@@ -258,7 +264,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Toledo's IT Solution's";
 				TargetAttributes = {
 					84B736831EB5647E00FF10E4 = {
@@ -304,10 +310,12 @@
 				84087E501FC1513E001442A1 /* fields.txt in Resources */,
 				84B736971EB5647E00FF10E4 /* LaunchScreen.storyboard in Resources */,
 				848F77181F2B076C00C910A7 /* disclaimer.html in Resources */,
+				8493A307209007AE00D58971 /* libraries.html in Resources */,
 				848F77161F2B005400C910A7 /* privacy.html in Resources */,
 				84087E4E1FC1513E001442A1 /* last_item.html in Resources */,
 				84B736941EB5647E00FF10E4 /* Assets.xcassets in Resources */,
 				84B736921EB5647E00FF10E4 /* Main.storyboard in Resources */,
+				8493A3052090069F00D58971 /* bootstrap.min.css in Resources */,
 				848F77111F2AD67600C910A7 /* terms.html in Resources */,
 				847C23881F21DC8B003F0E69 /* Images.xcassets in Resources */,
 				84087E4D1FC1513E001442A1 /* icon2.png in Resources */,
@@ -364,14 +372,12 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Volunteer Hour Tracker/Pods-Volunteer Hour Tracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/Onboard/Onboard.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Onboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +452,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -453,6 +460,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -502,6 +510,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -509,6 +518,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

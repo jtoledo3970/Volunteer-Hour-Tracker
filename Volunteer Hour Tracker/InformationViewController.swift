@@ -9,6 +9,7 @@
 import UIKit
 import Eureka
 import MessageUI
+import StoreKit
 
 class InformationViewController: FormViewController, MFMailComposeViewControllerDelegate {
     
@@ -36,7 +37,7 @@ class InformationViewController: FormViewController, MFMailComposeViewController
                 row.disabled = true
             }
             <<< LabelRow() { row in
-                row.title = "Copyright © 2017 Toledo's IT Solutions, Inc."
+                row.title = "2018 © Toledo's IT Solutions, Inc."
             }
         
             +++ Section()
@@ -44,14 +45,18 @@ class InformationViewController: FormViewController, MFMailComposeViewController
                 $0.title = $0.tag
                 $0.presentationMode = .segueName(segueName: "FeedbackViewControllerSegue", onDismiss: nil)
             }
-            
-//            +++ Section()
-//            <<< ButtonRow("Share this App") {
-//                $0.title = $0.tag
-//            }
-//                .onCellSelection { [weak self] (cell, row) in
-//                    
-//            }
+            <<< ButtonRow("Share this App") {
+                $0.title = $0.tag
+            }
+                .onCellSelection { [weak self] (cell, row) in
+                    self?.share()
+            }
+            <<< ButtonRow("Write a Review") {
+                $0.title = $0.tag
+                }
+                .onCellSelection { [weak self] (cell, row) in
+                    self?.review()
+            }
         
             +++ Section("Legal")
             <<< ButtonRow("Terms of Use") {
@@ -76,22 +81,40 @@ class InformationViewController: FormViewController, MFMailComposeViewController
                 self?.selection = "disclaimer"
                 self?.move()
             }
+            <<< ButtonRow("Open Source Libraries") {
+                $0.title = $0.tag
+                
+                }
+                .onCellSelection { [weak self] (cell, row) in
+                    self?.selection = "libraries"
+                    self?.move()
+            }
     }
     
     func move() {
         performSegue(withIdentifier: "LegalSegue", sender: self)
     }
     
-    //MARK: Share Screen Information
-    func buttonMethod() {
-        let messageStr:String  = "Hey check out this sweet new app I just found! It's an awesome volunteer hour tracker!"
-        let shareLink = ""
-        let shareItems:Array = [messageStr, ] as [Any]
-        let activityController = UIActivityViewController(activityItems:shareItems, applicationActivities: nil)
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            activityController.popoverPresentationController?.sourceView = self.view
+    // Share Function
+    
+    func share() {
+        let message = "Check out this Volunteer Hour Tracker"
+        if let link = NSURL(string: "https://itunes.apple.com/us/app/volunteer-hour-tracker/id1263708134?mt=8")
+        {
+            let objectsToShare = [message,link] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
 
-        self.present(activityController, animated: true,completion: nil)
+    // Review Functionality
+    func review() {
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+        } else {
+            // Fallback on earlier versions
+            UIApplication.shared.openURL(URL(string : "itms-apps://itunes.apple.com/us/app/volunteer-hour-tracker/id1263708134?mt=8")!);
         }
     }
     

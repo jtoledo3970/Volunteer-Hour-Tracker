@@ -11,6 +11,12 @@ import CoreData
 import Eureka
 
 class ExportViewController: FormViewController {
+    //  Time Vars
+    var tempHour = 0
+    var tempHourR = 0
+    var tempMin = 0
+    var finalTotalHours = 0
+    var finalTotalMin = 0
     
     // Core Data Information
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -86,6 +92,9 @@ class ExportViewController: FormViewController {
         for i in 0..<tasks.count {
             event.removeAll()
             
+            tempHour += Int(tasks[i].timeSpentHours)
+            tempMin += Int(tasks[i].timeSpentMinutes)
+            
             event["name"] = tasks[i].eventName
             event["date"] = tasks[i].eventDate?.dateToString()
             event["start"] = tasks[i].timeStart?.timeToString()
@@ -98,6 +107,9 @@ class ExportViewController: FormViewController {
         print(eventInfo.count)
         selection = valuesDictionary["type"] as! String
         print("Your selection was \(selection)")
+        
+        finalTime()
+        
         if selection == "PDF" {
             createEventAsHTML()
         } else if selection == "Spreadsheet" {
@@ -107,7 +119,7 @@ class ExportViewController: FormViewController {
     
     func createEventAsHTML() {
         pdfComposer = PDFComposer()
-        total = String(tasks.count)
+        total = "\(finalTotalHours) Hours and \(finalTotalMin) Minutes"
         if let eventHTML = pdfComposer.renderInvoice(items: eventInfo, totalAmount: total) {
             HTMLContent = eventHTML
         } else {
@@ -126,7 +138,7 @@ class ExportViewController: FormViewController {
         var csvText = "Event Name,Date,Start Time,End Time,Description\n"
         
         for i in 0..<tasks.count {
-            var task = tasks[i]
+            let task = tasks[i]
             var tempDescription = ""
             if task.eventDescription == nil {
                 tempDescription = " "
@@ -159,6 +171,12 @@ class ExportViewController: FormViewController {
             activityController.popoverPresentationController?.sourceView = self.view
         }
         self.present(activityController, animated: true,completion: nil)
+    }
+    
+    //  Time Functions
+    func finalTime() {
+        finalTotalHours = (tempMin / 60) + tempHour
+        finalTotalMin = tempMin % 60
     }
 
     /*
