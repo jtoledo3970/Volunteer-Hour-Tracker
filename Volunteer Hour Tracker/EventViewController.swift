@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EventViewController.swift
 //  Volunteer Hour Tracker
 //
 //  Created by Jose Toledo on 4/29/17.
@@ -13,6 +13,10 @@ class VolunteerTableViewCell : UITableViewCell {
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var timeSpentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+}
+
+class TotalTableViewCell : UITableViewCell {
+    @IBOutlet weak var totalLabel: UILabel!
 }
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FloatyDelegate, UITabBarDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
@@ -29,33 +33,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var pdfComposer : PDFComposer!
     var HTMLContent : String!
     var total = "0"
-
     
-//    let fab = Floaty()
-//    
-//    func layoutFab() {
-//        fab.addItem("Organization", icon: #imageLiteral(resourceName: "Pencil-Board-Black")) { (item) in
-//            self.testButton("organization", #imageLiteral(resourceName: "Pencil-Board"))
-//            self.fab.close()
-//        }
-//        fab.addItem("Event", icon: #imageLiteral(resourceName: "CalendarBigBlack")) { (item) in
-//            self.testButton("event", #imageLiteral(resourceName: "CalendarBig"))
-//            self.fab.close()
-//        }
-//        
-//        fab.sticky = true
-//        fab.paddingX = self.view.frame.width/6 - fab.frame.width
-//        fab.paddingY = self.view.frame.height/10 - fab.frame.height/4
-//        
-//        fab.fabDelegate = self
-//        
-//        // print(tableView!.frame)
-//        
-//        self.view.addSubview(fab)
-//    }
+//    Time Vars
+    var tempHour = 0
+    var tempHourR = 0
+    var tempMin = 0
+    var finalTotalHours = 0
+    var finalTotalMin = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getData()
         
         // DZN Empty Dataset
         tableView.emptyDataSetSource = self
@@ -65,13 +54,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Left Bar Button Item
-//        let leftBar = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(didPressLeftButton))
-//        navigationItem.leftBarButtonItem = leftBar
+        title = "Events"
         
-        title = "Volunteer Events"
-        
-//        layoutFab()
+        tableView.rowHeight = 60.0
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
@@ -111,9 +96,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
         performSegue(withIdentifier: "eventToNewEventSegue", sender: self)
-//        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
-//        ac.addAction(UIAlertAction(title: "Hurray", style: .default))
-//        present(ac, animated: true)
+
     }
     
     
@@ -167,53 +150,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print(tasks.count)
         
         for i in 0..<tasks.count {
-            print(tasks[i].eventName)
+            print(tasks[i].eventName!)
+            tempHour += Int(tasks[i].timeSpentHours)
+            tempMin += Int(tasks[i].timeSpentMinutes)
         }
-//        loadToDictionary()
+        finalTime()
     }
-//
-//    func loadToDictionary() {
-//        print(tasks.count)
-//        eventInfo.removeAll()
-//        for i in 0..<tasks.count {
-//            event.removeAll()
-//
-//            event["name"] = tasks[i].eventName
-//            event["date"] = tasks[i].eventDate?.dateToString()
-//            event["start"] = tasks[i].timeStart?.timeToString()
-//            event["end"] = tasks[i].timeEnded?.timeToString()
-//            event["description"] = tasks[i].eventDescription
-//
-//            eventInfo.append(event)
-//        }
-//        print(tasks)
-//        print(eventInfo.count)
-//        createEventAsHTML()
-//    }
-//
-//    func createEventAsHTML() {
-//        pdfComposer = PDFComposer()
-//        if let eventHTML = pdfComposer.renderInvoice(items: eventInfo, totalAmount: total) {
-//            HTMLContent = eventHTML
-//        } else {
-//            print("no load fam")
-//        }
-//        pdfComposer.exportHTMLContentToPDF(HTMLContent: HTMLContent)
-//    }
-    
-//    func getData() {
-//        let context = appDelegate.persistentContainer.viewContext
-//
-//        let fetchRequest: NSFetchRequest<Expenses> = Expenses.fetchRequest()
-//        let sort = NSSortDescriptor(key: #keyPath(Expenses.date), ascending: true)
-//        fetchRequest.sortDescriptors = [sort]
-//        do {
-//            expenses = try context.fetch(fetchRequest)
-//        } catch {
-//            print("Cannot fetch Expenses")
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let task = tasks[indexPath.row]
@@ -242,7 +184,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             kCircleBackgroundTopPosition: 4,
             kCircleIconHeight: 22,
             showCircularIcon: true
-            // contentViewColor: UIColor(red:0, green:0.479, blue:0.999, alpha:1)
         )
         let alert = SCLAlertView(appearance: appearance)
 //        let alertViewIcon = UIImage(named: "Pencil-Board")
@@ -264,52 +205,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         alert.showEdit("Please enter the name", subTitle: "of the new \(t)", closeButtonTitle: "Cancel", colorStyle: 0x2e8ffa, circleIconImage:image)
-        // End New Alert
-        
-//        let alert = UIAlertController(title: "Please enter the name",
-//                                      message: "of the new organization",
-//                                      preferredStyle: .alert)
-//        alert.addTextField { (textField: UITextField) in
-//            textField.keyboardAppearance = .dark
-//            textField.keyboardType = .default
-//            textField.autocorrectionType = .default
-//            textField.placeholder = "Type something here"
-//            textField.clearButtonMode = .whileEditing
-//        }
-//        var temp = ""
-//        
-//        // Submit button
-//        let submitAction = UIAlertAction(title: "Submit", style: .default, handler: { (action) -> Void in
-//            // Get 1st TextField's text
-//            let textField = alert.textFields![0]
-//            temp = textField.text!
-//            print("The output of temp is \(temp)")
-//            if !temp.isEmpty {
-//                print("This is temp before the save action: \(temp)")
-//                let organization = Organization(context: context)
-//                organization.organizationName = temp
-//                print(temp)
-//                // Save the data to coredata
-//                
-//                (UIApplication.shared.delegate as! AppDelegate).saveContext()
-//            } else {
-//                print("The text box was empty")
-//            }
-//        })
-//        
-//        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in })
-//        
-//        alert.addAction(submitAction)
-//        alert.addAction(cancel)
-//        present(alert, animated: true, completion: nil)
-        
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         sendingIndex = indexPath.row
         show = true
         performSegue(withIdentifier: "showEventSegue", sender: sendingIndex)
+    }
+    
+    //  Time Functions
+    func finalTime() {
+        finalTotalHours = (tempMin / 60) + tempHour
+        finalTotalMin = tempMin % 60
     }
     
     // Tab Bar Selection

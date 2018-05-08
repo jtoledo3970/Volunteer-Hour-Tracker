@@ -53,7 +53,7 @@ extension Section {
 
     internal class KVOWrapper: NSObject {
 
-        @objc dynamic private var _rows = NSMutableArray()
+        dynamic private var _rows = NSMutableArray()
         var rows: NSMutableArray {
             return mutableArrayValue(forKey: "_rows")
         }
@@ -154,6 +154,10 @@ open class Section {
 
     public required init() {}
 
+    public required init<S>(_ elements: S) where S: Sequence, S.Element == BaseRow {
+        self.append(contentsOf: elements)
+    }
+
     public init(_ initializer: (Section) -> Void) {
         initializer(self)
     }
@@ -199,7 +203,7 @@ open class Section {
     var hiddenCache = false
 }
 
-extension Section: MutableCollection, BidirectionalCollection {
+extension Section : MutableCollection, BidirectionalCollection {
 
     // MARK: MutableCollectionType
 
@@ -233,18 +237,26 @@ extension Section: MutableCollection, BidirectionalCollection {
     }
 
     public subscript (range: Range<Int>) -> ArraySlice<BaseRow> {
-        get { return kvoWrapper.rows.map({ $0 as! BaseRow })[range] }
+        get { return kvoWrapper.rows.map({ $0 as! BaseRow })[range.lowerBound...range.upperBound] }
         set {
             replaceSubrange(range, with: newValue)
         }
     }
 
-    public func index(after i: Int) -> Int { return i + 1 }
-    public func index(before i: Int) -> Int { return i - 1 }
+    public func index(after i: Int) -> Int {return i + 1}
+    public func index(before i: Int) -> Int {return i - 1}
 
 }
 
-extension Section: RangeReplaceableCollection {
+/// To add `RangeReplaceableCollection` conformance to your custom collection,
+/// add an empty initializer and the `replaceSubrange(_:with:)` method to your
+/// custom type. `RangeReplaceableCollection` provides default implementations
+/// of all its other methods using this initializer and method. For example,
+/// the `removeSubrange(_:)` method is implemented by calling
+/// `replaceSubrange(_:with:)` with an empty collection for the `newElements`
+/// parameter. You can override any of the protocol's required methods to
+/// provide your own custom implementation.
+extension Section : RangeReplaceableCollection {
 
     // MARK: RangeReplaceableCollectionType
 
@@ -262,6 +274,7 @@ extension Section: RangeReplaceableCollection {
         }
     }
 
+    #if swift(>=3.2)
     public func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C : Collection, C.Element == BaseRow {
         for i in subrange.lowerBound..<subrange.upperBound {
             if let row = kvoWrapper.rows.object(at: i) as? BaseRow {
@@ -270,14 +283,32 @@ extension Section: RangeReplaceableCollection {
             }
         }
 
-        kvoWrapper.rows.replaceObjects(in: NSRange(location: subrange.lowerBound, length: subrange.upperBound - subrange.lowerBound),
-                                       withObjectsFrom: newElements.map { $0 })
+        let range = NSRange(location: subrange.lowerBound, length: subrange.upperBound - subrange.lowerBound)
+        kvoWrapper.rows.replaceObjects(in: range, withObjectsFrom: newElements.map { $0 })
 
         kvoWrapper._allRows.insert(contentsOf: newElements, at: indexForInsertion(at: subrange.lowerBound))
         for row in newElements {
             row.wasAddedTo(section: self)
         }
     }
+    #else
+    public func replaceSubrange<C>(_ subrange: Range<Index>, with newElements: C) where C : Collection, C.Iterator.Element == Iterator.Element {
+        for i in subrange.lowerBound..<subrange.upperBound {
+            if let row = kvoWrapper.rows.object(at: i) as? BaseRow {
+                row.willBeRemovedFromSection()
+                kvoWrapper._allRows.remove(at: kvoWrapper._allRows.index(of: row)!)
+            }
+        }
+        
+        let range = NSRange(location: subrange.lowerBound, length: subrange.upperBound - subrange.lowerBound)
+        kvoWrapper.rows.replaceObjects(in: range, withObjectsFrom: newElements.map { $0 })
+        
+        kvoWrapper._allRows.insert(contentsOf: newElements, at: indexForInsertion(at: subrange.lowerBound))
+        for row in newElements {
+            row.wasAddedTo(section: self)
+        }
+    }
+    #endif
 
     public func removeAll(keepingCapacity keepCapacity: Bool = false) {
         // not doing anything with capacity
@@ -452,31 +483,27 @@ open class MultivaluedSection: Section {
         self.multivaluedOptions = multivaluedOptions
         super.init(header: header, footer: footer, {section in initializer(section as! MultivaluedSection) })
         guard multivaluedOptions.contains(.Insert) else { return }
-        let addRow = addButtonProvider(self)
-        addRow.onCellSelection { cell, row in
-            guard let tableView = cell.formViewController()?.tableView, let indexPath = row.indexPath else { return }
-            cell.formViewController()?.tableView(tableView, commit: .insert, forRowAt: indexPath)
-        }
-        self <<< addRow
+        initialize()
     }
 
     public required init() {
         self.multivaluedOptions = MultivaluedOptions.Insert.union(.Delete)
         super.init()
+        initialize()
+    }
+
+    public required init<S>(_ elements: S) where S : Sequence, S.Element == BaseRow {
+        self.multivaluedOptions = MultivaluedOptions.Insert.union(.Delete)
+        super.init(elements)
+        initialize()
+    }
+
+    func initialize() {
         let addRow = addButtonProvider(self)
         addRow.onCellSelection { cell, row in
             guard let tableView = cell.formViewController()?.tableView, let indexPath = row.indexPath else { return }
             cell.formViewController()?.tableView(tableView, commit: .insert, forRowAt: indexPath)
         }
         self <<< addRow
-    }
-
-    /**
-     Method used to get all the values of the section.
-
-     - returns: An Array mapping the row values. [value]
-     */
-    public func values() -> [Any?] {
-        return kvoWrapper._allRows.filter({ $0.baseValue != nil }).map({ $0.baseValue })
     }
 }
