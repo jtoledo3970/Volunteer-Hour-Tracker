@@ -10,14 +10,31 @@ import UIKit
 import Eureka
 import MessageUI
 import StoreKit
+import CoreData
 
 class InformationViewController: FormViewController, MFMailComposeViewControllerDelegate {
-
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var tasks: [Task] = []
+    var eventInfo = [[String : String]]()
+    var event = [String:String]()
+    
+    // Time Vars
+    var tempHour = 0
+    var tempHourR = 0
+    var tempMin = 0
+    var finalTotalHours = 0
+    var finalTotalMin = 0
+    var taskCount = 0
+    
     var selection = ""
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Information"
 
         let strVersion = Bundle .main .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
@@ -37,7 +54,19 @@ class InformationViewController: FormViewController, MFMailComposeViewController
                 row.disabled = true
             }
             <<< LabelRow() { row in
-                row.title = "2018 © Toledo's IT Solutions, Inc."
+                row.title = "2019 © Toledo's IT Solutions, Inc."
+            }
+            
+            +++ Section("Your Statistics")
+            <<< TextRow() { row in
+                row.title = "Total Events"
+                row.value = String(taskCount)
+                row.disabled = true
+            }
+            <<< TextRow() { row in
+                row.title = "Total Hours"
+                row.value = ""
+                row.disabled = true
             }
 
             +++ Section()
@@ -94,9 +123,38 @@ class InformationViewController: FormViewController, MFMailComposeViewController
     func move() {
         performSegue(withIdentifier: "LegalSegue", sender: self)
     }
+    
+    // Data Functions
+    func getData() {
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Task.eventDate), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        
+        do {
+            tasks = try context.fetch(fetchRequest)
+        }
+        catch {
+            print("Fetching Failed")
+        }
+        taskCount = tasks.count
+        tempHour = 0
+        tempMin = 0
+        for i in 0..<tasks.count {
+            print(tasks[i].eventName!)
+            tempHour += Int(tasks[i].timeSpentHours)
+            tempMin += Int(tasks[i].timeSpentMinutes)
+        }
+        finalTime()
+    }
+    
+    func finalTime() {
+        finalTotalHours = (tempMin / 60) + tempHour
+        finalTotalMin = tempMin % 60
+        print("Final total hours \(finalTotalHours)")
+        self.tableView.reloadData()
+    }
 
     // Share Function
-
     func share() {
         let message = "Check out this Volunteer Hour Tracker"
         if let link = NSURL(string: "https://itunes.apple.com/us/app/volunteer-hour-tracker/id1263708134?mt=8")

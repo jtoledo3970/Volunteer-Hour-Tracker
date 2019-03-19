@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G1U-DM-anM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G1U-DM-anM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -97,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Pa-mt-3fQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="73.313343328335833"/>
+            <point key="canvasLocation" x="1012" y="396"/>
         </scene>
         <!--Add Event Form View Controller-->
         <scene sceneID="6YV-aL-yHv">
@@ -120,7 +120,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nlu-hB-nbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="t3a-pc-pzv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1844" y="73"/>
+            <point key="canvasLocation" x="1844" y="396"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="umm-sC-A4I">
@@ -133,9 +133,10 @@
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="qwF-dF-jn0" kind="relationship" relationship="viewControllers" id="UlR-0B-AME"/>
-                        <segue destination="9aY-Jf-cci" kind="relationship" relationship="viewControllers" id="uFJ-WA-fGw"/>
-                        <segue destination="Dzg-Qw-pgO" kind="relationship" relationship="viewControllers" id="u3d-4f-zwo"/>
+                        <segue destination="DGY-en-JCZ" kind="relationship" relationship="viewControllers" id="b0m-I4-B7r"/>
+                        <segue destination="qwF-dF-jn0" kind="relationship" relationship="viewControllers" id="VKY-0u-Vyd"/>
+                        <segue destination="9aY-Jf-cci" kind="relationship" relationship="viewControllers" id="OjF-gr-lmk"/>
+                        <segue destination="Dzg-Qw-pgO" kind="relationship" relationship="viewControllers" id="wxA-ez-EkO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9j-w3-789" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,13 +160,95 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lpw-8a-wLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="834"/>
+            <point key="canvasLocation" x="1012" y="1114"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="9OQ-vl-lIi">
+            <objects>
+                <navigationController id="DGY-en-JCZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dashboard" id="mei-EC-y0Q"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lPI-DP-z11">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8Ls-aj-fZ0" kind="relationship" relationship="rootViewController" id="Uge-S2-kPC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mJp-YT-Pmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="188" y="-304"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="cLd-UI-byK">
+            <objects>
+                <viewController id="8Ls-aj-fZ0" customClass="DashboardViewController" customModule="Volunteer_Hour_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bD6-o8-qrb"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mrw-V5-2qS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T4S-2f-mJr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oZ6-WK-diz">
+                                <rect key="frame" x="120" y="84" width="135" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Total Events" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YmD-pg-RKm">
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="28"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FpW-ex-Qnx">
+                                        <rect key="frame" x="0.0" y="43" width="135" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U0C-bE-JWm">
+                                <rect key="frame" x="130" y="174" width="115" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Total Time" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNN-5r-NcG">
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="28"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jLv-px-VcT">
+                                        <rect key="frame" x="0.0" y="43" width="115" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="U0C-bE-JWm" firstAttribute="top" secondItem="oZ6-WK-diz" secondAttribute="bottom" constant="30" id="2ga-CL-YPQ"/>
+                            <constraint firstItem="oZ6-WK-diz" firstAttribute="top" secondItem="bD6-o8-qrb" secondAttribute="bottom" constant="20" id="5EX-zi-2hy"/>
+                            <constraint firstItem="U0C-bE-JWm" firstAttribute="centerX" secondItem="T4S-2f-mJr" secondAttribute="centerX" id="H6h-WM-KbJ"/>
+                            <constraint firstItem="oZ6-WK-diz" firstAttribute="centerX" secondItem="T4S-2f-mJr" secondAttribute="centerX" id="u5k-g0-FVN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Dashboard" id="O3F-DC-lg2"/>
+                    <connections>
+                        <outlet property="totalEventsTextField" destination="FpW-ex-Qnx" id="sGn-t4-0Hz"/>
+                        <outlet property="totalHoursTextField" destination="jLv-px-VcT" id="HJ7-FM-J5r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A3I-Gt-HC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="-304"/>
         </scene>
         <!--Events-->
         <scene sceneID="suJ-hs-fWT">
             <objects>
                 <navigationController title="Events" automaticallyAdjustsScrollViewInsets="NO" id="qwF-dF-jn0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="CalendarBig" id="bHB-q5-oCZ"/>
+                    <tabBarItem key="tabBarItem" title="Logbook" image="CalendarBig" id="bHB-q5-oCZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vi7-h3-aVp">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -181,7 +264,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LTS-gG-Xum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="73"/>
+            <point key="canvasLocation" x="188" y="397"/>
         </scene>
         <!--Information-->
         <scene sceneID="MXM-g7-QhW">
@@ -200,7 +283,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPt-4a-e4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="2286"/>
+            <point key="canvasLocation" x="188" y="1861"/>
         </scene>
         <!--Information View Controller-->
         <scene sceneID="lw0-AF-Tps">
@@ -223,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWM-fF-dxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="2286"/>
+            <point key="canvasLocation" x="1012" y="1861"/>
         </scene>
         <!--Feedback View Controller-->
         <scene sceneID="KWX-gC-jxi">
@@ -245,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOW-zq-RMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1844" y="1931"/>
+            <point key="canvasLocation" x="1844" y="1507"/>
         </scene>
         <!--Legal View Controller-->
         <scene sceneID="PHI-tG-Mly">
@@ -278,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNa-6O-WtI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2705" y="2286"/>
+            <point key="canvasLocation" x="2705" y="1861"/>
         </scene>
         <!--Export Data-->
         <scene sceneID="BoF-ej-acC">
@@ -297,50 +380,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPC-cL-ZDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="187.19999999999999" y="834.78260869565224"/>
-        </scene>
-        <!--Stats Form View Controller-->
-        <scene sceneID="EGq-Wf-h1R">
-            <objects>
-                <viewController id="ilD-11-Hki" customClass="StatsFormViewController" customModule="Volunteer_Hour_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uww-bM-qAU"/>
-                        <viewControllerLayoutGuide type="bottom" id="FZL-3m-6lr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Bvs-qa-m8s">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="l0K-BU-ReJ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gH3-Ac-Udb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1012" y="1543"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="1dE-yd-TgI">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mPs-3N-e9b" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Z6U-Pz-HaK"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7GP-jb-01w">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ilD-11-Hki" kind="relationship" relationship="rootViewController" id="Dhx-IC-41Q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p9j-F9-qGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="188" y="1542"/>
+            <point key="canvasLocation" x="188" y="1114"/>
         </scene>
     </scenes>
     <resources>
         <image name="CalendarBig" width="24" height="25"/>
-        <image name="Export" width="24" height="24"/>
+        <image name="Export" width="48" height="48"/>
         <image name="Info" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
