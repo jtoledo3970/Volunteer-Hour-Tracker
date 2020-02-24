@@ -3,7 +3,7 @@
 //  Volunteer Hour Tracker
 //
 //  Created by Jose Toledo on 7/24/17.
-//  Copyright © 2017 Toledo's IT Solutions, Inc. All rights reserved.
+//  Copyright © 2020 Toledo's IT Solutions, Inc. All rights reserved.
 //
 
 import UIKit
