@@ -148,7 +148,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         print(tasks.count)
-        
+        tempHour = 0
+        tempMin = 0
         for i in 0..<tasks.count {
             print(tasks[i].eventName!)
             tempHour += Int(tasks[i].timeSpentHours)
@@ -217,6 +218,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func finalTime() {
         finalTotalHours = (tempMin / 60) + tempHour
         finalTotalMin = tempMin % 60
+        print("Final total hours \(finalTotalHours)")
     }
     
     // Tab Bar Selection
