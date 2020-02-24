@@ -17,8 +17,6 @@
 		84087E511FC1513E001442A1 /* single_item.html in Resources */ = {isa = PBXBuildFile; fileRef = 84087E4B1FC1513E001442A1 /* single_item.html */; };
 		84087E521FC1513E001442A1 /* eventList.html in Resources */ = {isa = PBXBuildFile; fileRef = 84087E4C1FC1513E001442A1 /* eventList.html */; };
 		8442F3FA1ECF376800A36492 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442F3F91ECF376800A36492 /* CategoryTableViewController.swift */; };
-		847C23851F21D700003F0E69 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C23831F21D700003F0E69 /* SCLAlertView.swift */; };
-		847C23861F21D700003F0E69 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C23841F21D700003F0E69 /* SCLExtensions.swift */; };
 		847C23881F21DC8B003F0E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847C23871F21DC8B003F0E69 /* Images.xcassets */; };
 		8488A7891F2D592B007B9CCB /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488A7881F2D592B007B9CCB /* UIScrollView+EmptyDataSet.m */; };
 		848F77111F2AD67600C910A7 /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 848F770F1F2AD67600C910A7 /* terms.html */; };
@@ -49,6 +47,7 @@
 		84F2F9EC1F274ABB007EDD19 /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2F9EB1F274ABB007EDD19 /* DeviceExtension.swift */; };
 		C98D728991232E74A5CFE24A /* Pods_Volunteer_Hour_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317C7ED02A87DA9872F27481 /* Pods_Volunteer_Hour_Tracker.framework */; };
 		D08D38602231DC47007D81E8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08D385F2231DC47007D81E8 /* DashboardViewController.swift */; };
+		D0A5817922433E7A004180B5 /* UIColor+TC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5817822433E7A004180B5 /* UIColor+TC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,8 +64,6 @@
 		84087E4C1FC1513E001442A1 /* eventList.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = eventList.html; sourceTree = "<group>"; };
 		8432827D1ECA7B320090F662 /* Volunteer Hour Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Volunteer Hour Tracker.entitlements"; sourceTree = "<group>"; };
 		8442F3F91ECF376800A36492 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
-		847C23831F21D700003F0E69 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
-		847C23841F21D700003F0E69 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		847C23871F21DC8B003F0E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8488A7861F2D592A007B9CCB /* Volunteer Hour Tracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Volunteer Hour Tracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		8488A7871F2D592B007B9CCB /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
@@ -103,6 +100,7 @@
 		84F2F9EB1F274ABB007EDD19 /* DeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceExtension.swift; sourceTree = "<group>"; };
 		9890946FC1EAB795F4DD1618 /* Pods-Volunteer Hour Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Volunteer Hour Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Volunteer Hour Tracker/Pods-Volunteer Hour Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		D08D385F2231DC47007D81E8 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		D0A5817822433E7A004180B5 /* UIColor+TC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+TC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,9 +168,8 @@
 		848F771A1F2B079C00C910A7 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				D0A5817822433E7A004180B5 /* UIColor+TC.swift */,
 				84F2F9EB1F274ABB007EDD19 /* DeviceExtension.swift */,
-				847C23831F21D700003F0E69 /* SCLAlertView.swift */,
-				847C23841F21D700003F0E69 /* SCLExtensions.swift */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -248,8 +245,7 @@
 				84B736801EB5647E00FF10E4 /* Sources */,
 				84B736811EB5647E00FF10E4 /* Frameworks */,
 				84B736821EB5647E00FF10E4 /* Resources */,
-				13EEB77C3423F7955260EF4A /* [CP] Embed Pods Frameworks */,
-				1179F7D7DADE1C5B71D09189 /* [CP] Copy Pods Resources */,
+				5187787C7980A3E7970379E8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,13 +263,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = "Toledo's IT Solution's";
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Toledo's IT Solution's, Inc.";
 				TargetAttributes = {
 					84B736831EB5647E00FF10E4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 636EH3577K;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -291,6 +286,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -333,21 +329,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1179F7D7DADE1C5B71D09189 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Volunteer Hour Tracker/Pods-Volunteer Hour Tracker-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		13C7D276E1766E650B209834 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,13 +347,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		13EEB77C3423F7955260EF4A /* [CP] Embed Pods Frameworks */ = {
+		5187787C7980A3E7970379E8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Volunteer Hour Tracker/Pods-Volunteer Hour Tracker-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Volunteer Hour Tracker/Pods-Volunteer Hour Tracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
@@ -385,7 +366,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Volunteer Hour Tracker/Pods-Volunteer Hour Tracker-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Volunteer Hour Tracker/Pods-Volunteer Hour Tracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -408,13 +389,12 @@
 				84087E441FBECA63001442A1 /* CustomPrintPageRenderer.swift in Sources */,
 				84B7369F1EB56CAC00FF10E4 /* AddTaskViewController.swift in Sources */,
 				8442F3FA1ECF376800A36492 /* CategoryTableViewController.swift in Sources */,
+				D0A5817922433E7A004180B5 /* UIColor+TC.swift in Sources */,
 				84087E461FC10C1A001442A1 /* ExportViewController.swift in Sources */,
 				84CD964B1F14AC76007793CE /* FloatyDelegate.swift in Sources */,
 				84B736A11EB5710900FF10E4 /* EventViewController.swift in Sources */,
 				84F2F9E71F2689AD007EDD19 /* AddEventTableViewController.swift in Sources */,
-				847C23861F21D700003F0E69 /* SCLExtensions.swift in Sources */,
 				84D92E781F254D7F00D5800D /* TabBarController.swift in Sources */,
-				847C23851F21D700003F0E69 /* SCLAlertView.swift in Sources */,
 				84B7368B1EB5647E00FF10E4 /* Volunteer_Hour_Tracker.xcdatamodeld in Sources */,
 				8488A7891F2D592B007B9CCB /* UIScrollView+EmptyDataSet.m in Sources */,
 				84F2F9EA1F272CD4007EDD19 /* InformationViewController.swift in Sources */,
@@ -447,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -505,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -559,15 +541,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Volunteer Hour Tracker/Volunteer Hour Tracker.entitlements";
-				DEVELOPMENT_TEAM = 636EH3577K;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Volunteer Hour Tracker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.toledositsolutions.Volunteer-Hour-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Volunteer Hour Tracker/Volunteer Hour Tracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -578,14 +561,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Volunteer Hour Tracker/Volunteer Hour Tracker.entitlements";
-				DEVELOPMENT_TEAM = 636EH3577K;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Volunteer Hour Tracker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.toledositsolutions.Volunteer-Hour-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Volunteer Hour Tracker/Volunteer Hour Tracker-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

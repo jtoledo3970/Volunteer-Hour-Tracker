@@ -30,13 +30,12 @@ class DashboardViewController: UIViewController {
         super.viewWillAppear(true)
         getData()
         totalEventsTextField.text = taskCount
-        var totalHours = "\(finalTotalHours) Hours and \(finalTotalMin) Minutes"
+        let totalHours = "\(finalTotalHours) Hours and \(finalTotalMin) Minutes"
         totalHoursTextField.text = totalHours
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     // Data Functions
