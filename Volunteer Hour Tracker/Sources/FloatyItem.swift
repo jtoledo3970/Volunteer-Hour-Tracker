@@ -135,7 +135,7 @@ open class FloatyItem: UIView {
             if _iconImageView == nil {
                 _iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
                 _iconImageView?.center = CGPoint(x: size/2, y: size/2) + imageOffset
-                _iconImageView?.contentMode = UIView.ContentMode.scaleAspectFill
+                _iconImageView?.contentMode = UIViewContentMode.scaleAspectFill
                 addSubview(_iconImageView!)
             }
             return _iconImageView!
@@ -195,10 +195,10 @@ open class FloatyItem: UIView {
         setShadow()
 
         if _titleLabel != nil {
-            bringSubviewToFront(_titleLabel!)
+            bringSubview(toFront: _titleLabel!)
         }
         if _iconImageView != nil {
-            bringSubviewToFront(_iconImageView!)
+            bringSubview(toFront: _iconImageView!)
         }
     }
 

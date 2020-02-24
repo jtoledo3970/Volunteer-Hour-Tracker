@@ -23,33 +23,17 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
-
-/// Specific type, Responsible for the options passed to a selector alert view controller
-public protocol AlertOptionsProviderRow: OptionsProviderRow {
-
-    var cancelTitle: String? { get set }
-
-}
 
 /// Selector UIAlertController
-open class SelectorAlertController<AlertOptionsRow: AlertOptionsProviderRow>: UIAlertController, TypedRowControllerType where AlertOptionsRow.OptionsProviderType.Option == AlertOptionsRow.Cell.Value, AlertOptionsRow: BaseRow {
+open class SelectorAlertController<T> : UIAlertController, TypedRowControllerType where T: Equatable {
 
     /// The row that pushed or presented this controller
-    public var row: RowOf<AlertOptionsRow.Cell.Value>!
+    public var row: RowOf<T>!
 
-    @available(*, deprecated, message: "Use AlertOptionsRow.cancelTitle instead.")
     public var cancelTitle = NSLocalizedString("Cancel", comment: "")
 
     /// A closure to be called when the controller disappears.
     public var onDismissCallback: ((UIViewController) -> Void)?
-    
-    /// Options provider to use to get available options.
-    /// If not set will use synchronous data provider built with `row.dataProvider.arrayData`.
-    //    public var optionsProvider: OptionsProvider<T>?
-    public var optionsProviderRow: AlertOptionsRow {
-        return row as Any as! AlertOptionsRow
-    }
 
     override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -66,14 +50,13 @@ open class SelectorAlertController<AlertOptionsRow: AlertOptionsProviderRow>: UI
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        guard let options = optionsProviderRow.options else { return }
-        let cancelTitle = optionsProviderRow.cancelTitle ?? NSLocalizedString("Cancel", comment: "")
+        guard let options = row.dataProvider?.arrayData else { return }
         addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
         for option in options {
             addAction(UIAlertAction(title: row.displayValueFor?(option), style: .default, handler: { [weak self] _ in
                 self?.row.value = option
                 self?.onDismissCallback?(self!)
-            }))
+                }))
         }
     }
 

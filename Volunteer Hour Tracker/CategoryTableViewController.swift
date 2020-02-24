@@ -8,7 +8,6 @@
 //
 
 import UIKit
-import SCLAlertView
 
 class CategoryTableViewCell : UITableViewCell {
     @IBOutlet weak var organizationNameLabel: UILabel!
@@ -53,15 +52,15 @@ class CategoryTableViewController : UITableViewController, FloatyDelegate {
         // Navigation Bar Style
         navigationController!.navigationBar.barTintColor = UIColor(red:0, green:0.479, blue:0.999, alpha:1)
         navigationController!.navigationBar.tintColor = UIColor.white
-        self.navigationController!.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.font.rawValue: UIFont(name: ".SFUIText-Light", size: 21)!,NSAttributedString.Key.foregroundColor.rawValue: UIColor.white])
+        self.navigationController!.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: ".SFUIText-Light", size: 21)!,NSForegroundColorAttributeName: UIColor.white]
         
         title = "Categories"
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(CategoryTableViewController.newAlert))
+        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(CategoryTableViewController.newAlert))
         navigationItem.rightBarButtonItem = addButton
     }
     
-    @objc func newAlert() {
+    func newAlert() {
         // Add a text field
         let alert = SCLAlertView()
         let txt = alert.addTextField("Enter your name")
@@ -157,7 +156,7 @@ class CategoryTableViewController : UITableViewController, FloatyDelegate {
         }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let organization = organizations[indexPath.row]
             context.delete(organization)
@@ -177,10 +176,4 @@ class CategoryTableViewController : UITableViewController, FloatyDelegate {
         super.prepare(for: segue, sender: sender)
     }
     
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

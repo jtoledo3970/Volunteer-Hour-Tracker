@@ -48,7 +48,7 @@ SCLAlertView().showTitle(
     subTitle: "Operation successfully completed.", // String of view
     duration: 2.0, // Duration to show before closing automatically, default: 0.0
     completeText: "Done", // Optional button value, default: ""
-    style: .success, // Styles - see below.
+    style: .Success, // Styles - see below.
     colorStyle: 0xA429FF,
     colorTextButton: 0xFFFFFF
 )
@@ -77,7 +77,7 @@ let alert = SCLAlertView(appearance: appearance)
 let alertView = SCLAlertView()
 alertView.addButton("First Button", target:self, selector:Selector("firstButton"))
 alertView.addButton("Second Button") {
-    print("Second button tapped")
+    println("Second button tapped")
 }
 alertView.showSuccess("Button View", subTitle: "This alert view has buttons")
 ```
@@ -192,7 +192,7 @@ alert.showInfo("Login", subTitle: "", duration: 10)
 
 #### List of properties to customize
 
-```swift
+````swift
 // Button 
 kButtonFont: UIFont                     
 buttonCornerRadius : CGFloat            
@@ -222,7 +222,6 @@ kWindowHeight: CGFloat
 shouldAutoDismiss: Bool // Set this false to 'Disable' Auto hideView when SCLButton is tapped
 fieldCornerRadius : CGFloat
 contentViewCornerRadius : CGFloat
-disableTapGesture: Bool // set this to true if adding tableview to subView
 ```
 
 
@@ -230,7 +229,7 @@ disableTapGesture: Bool // set this to true if adding tableview to subView
 
 ```swift
 enum SCLAlertViewStyle: Int {
-    case success, error, notice, warning, info, edit, wait, question
+    case Success, Error, Notice, Warning, Info, Edit, Wait
 }
 ```
 
@@ -240,7 +239,7 @@ enum SCLAlertViewStyle: Int {
 ```swift
 // Animation Styles
 public enum SCLAnimationStyle {
-    case noAnimation, topToBottom, bottomToTop, leftToRight, rightToLeft
+    case NoAnimation, TopToBottom, BottomToTop, LeftToRight, RightToLeft
 }
 ```
 
@@ -248,19 +247,11 @@ public enum SCLAnimationStyle {
 Installation
 ---
 
-SCLAlertView is available through 
-
-### [CocoaPods](http://cocoapods.org)
+SCLAlertView is available through [CocoaPods](http://cocoapods.org).
 
 To install add the following line to your Podfile:
 
     pod 'SCLAlertView'
-
-### [Carthage](https://github.com/Carthage/Carthage)
-
-To install add the following line to your Cartfile:
-
-`github "vikmeup/SCLAlertView-Swift" "master"`
 
 Collaboration
 ---

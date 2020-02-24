@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -134,10 +133,10 @@
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="qwF-dF-jn0" kind="relationship" relationship="viewControllers" id="PZs-kl-VhA"/>
-                        <segue destination="DGY-en-JCZ" kind="relationship" relationship="viewControllers" id="PA0-Dz-bgt"/>
-                        <segue destination="9aY-Jf-cci" kind="relationship" relationship="viewControllers" id="ne3-6n-gHc"/>
-                        <segue destination="Dzg-Qw-pgO" kind="relationship" relationship="viewControllers" id="sv7-5O-o7g"/>
+                        <segue destination="DGY-en-JCZ" kind="relationship" relationship="viewControllers" id="b0m-I4-B7r"/>
+                        <segue destination="qwF-dF-jn0" kind="relationship" relationship="viewControllers" id="VKY-0u-Vyd"/>
+                        <segue destination="9aY-Jf-cci" kind="relationship" relationship="viewControllers" id="OjF-gr-lmk"/>
+                        <segue destination="Dzg-Qw-pgO" kind="relationship" relationship="viewControllers" id="wxA-ez-EkO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9j-w3-789" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,7 +166,7 @@
         <scene sceneID="9OQ-vl-lIi">
             <objects>
                 <navigationController id="DGY-en-JCZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="catalog" id="mei-EC-y0Q"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" id="mei-EC-y0Q"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lPI-DP-z11">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -192,73 +191,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIh-UE-pVr">
-                                <rect key="frame" x="15" y="88" width="345" height="241"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oZ6-WK-diz">
+                                <rect key="frame" x="120" y="84" width="135" height="60"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oZ6-WK-diz">
-                                        <rect key="frame" x="93" y="79" width="159" height="83"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Total Events" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YmD-pg-RKm">
-                                                <rect key="frame" x="0.0" y="0.0" width="159" height="36"/>
-                                                <color key="textColor" name="tcWhite"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FpW-ex-Qnx">
-                                                <rect key="frame" x="0.0" y="51" width="159" height="32"/>
-                                                <color key="textColor" name="tcWhite"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Total Events" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YmD-pg-RKm">
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="28"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FpW-ex-Qnx">
+                                        <rect key="frame" x="0.0" y="43" width="135" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
-                                <color key="backgroundColor" name="tint"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="oZ6-WK-diz" firstAttribute="centerX" secondItem="hIh-UE-pVr" secondAttribute="centerX" id="Fsw-ak-Cnn"/>
-                                    <constraint firstItem="oZ6-WK-diz" firstAttribute="centerY" secondItem="hIh-UE-pVr" secondAttribute="centerY" id="PkL-cC-Vwy"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7S-sT-YDu">
-                                <rect key="frame" x="15" y="353" width="345" height="241"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U0C-bE-JWm">
+                                <rect key="frame" x="130" y="174" width="115" height="60"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U0C-bE-JWm">
-                                        <rect key="frame" x="104.5" y="79" width="136" height="83"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Total Time" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNN-5r-NcG">
-                                                <rect key="frame" x="0.0" y="0.0" width="136" height="36"/>
-                                                <color key="textColor" name="tcWhite"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jLv-px-VcT">
-                                                <rect key="frame" x="0.0" y="51" width="136" height="32"/>
-                                                <color key="textColor" name="tcWhite"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Total Time" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNN-5r-NcG">
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="28"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jLv-px-VcT">
+                                        <rect key="frame" x="0.0" y="43" width="115" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
-                                <color key="backgroundColor" name="tint"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="U0C-bE-JWm" firstAttribute="centerX" secondItem="a7S-sT-YDu" secondAttribute="centerX" id="fEA-tz-CWT"/>
-                                    <constraint firstItem="U0C-bE-JWm" firstAttribute="centerY" secondItem="a7S-sT-YDu" secondAttribute="centerY" id="xl9-LQ-5La"/>
-                                </constraints>
-                            </view>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Mrw-V5-2qS" firstAttribute="top" secondItem="a7S-sT-YDu" secondAttribute="bottom" constant="24" id="5gc-Qy-oul"/>
-                            <constraint firstItem="a7S-sT-YDu" firstAttribute="leading" secondItem="T4S-2f-mJr" secondAttribute="leading" constant="15" id="BK6-d0-Xae"/>
-                            <constraint firstAttribute="trailing" secondItem="hIh-UE-pVr" secondAttribute="trailing" constant="15" id="XDH-2e-Fhm"/>
-                            <constraint firstItem="a7S-sT-YDu" firstAttribute="top" secondItem="hIh-UE-pVr" secondAttribute="bottom" constant="24" id="Xbb-TI-b2T"/>
-                            <constraint firstAttribute="trailing" secondItem="a7S-sT-YDu" secondAttribute="trailing" constant="15" id="d3n-w0-SSZ"/>
-                            <constraint firstItem="hIh-UE-pVr" firstAttribute="top" secondItem="bD6-o8-qrb" secondAttribute="bottom" constant="24" id="dHb-ET-CQZ"/>
-                            <constraint firstItem="hIh-UE-pVr" firstAttribute="leading" secondItem="T4S-2f-mJr" secondAttribute="leading" constant="15" id="qcl-Vh-tgo"/>
-                            <constraint firstItem="a7S-sT-YDu" firstAttribute="height" secondItem="hIh-UE-pVr" secondAttribute="height" id="zqK-2L-DXE"/>
+                            <constraint firstItem="U0C-bE-JWm" firstAttribute="top" secondItem="oZ6-WK-diz" secondAttribute="bottom" constant="30" id="2ga-CL-YPQ"/>
+                            <constraint firstItem="oZ6-WK-diz" firstAttribute="top" secondItem="bD6-o8-qrb" secondAttribute="bottom" constant="20" id="5EX-zi-2hy"/>
+                            <constraint firstItem="U0C-bE-JWm" firstAttribute="centerX" secondItem="T4S-2f-mJr" secondAttribute="centerX" id="H6h-WM-KbJ"/>
+                            <constraint firstItem="oZ6-WK-diz" firstAttribute="centerX" secondItem="T4S-2f-mJr" secondAttribute="centerX" id="u5k-g0-FVN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="O3F-DC-lg2"/>
@@ -414,13 +387,6 @@
         <image name="CalendarBig" width="24" height="25"/>
         <image name="Export" width="48" height="48"/>
         <image name="Info" width="24" height="24"/>
-        <image name="catalog" width="48" height="48"/>
-        <namedColor name="tcWhite">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="tint">
-            <color red="0.0" green="0.47900000214576721" blue="0.99900001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Vrs-Ex-xJv"/>

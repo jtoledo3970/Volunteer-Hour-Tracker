@@ -23,11 +23,10 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
-open class PushSelectorCell<T: Equatable> : Cell<T>, CellType {
+open class PushSelectorCell<T> : Cell<T>, CellType where T: Equatable {
 
-    required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 
@@ -44,14 +43,13 @@ open class PushSelectorCell<T: Equatable> : Cell<T>, CellType {
 }
 
 /// Generic row type where a user must select a value among several options.
-open class SelectorRow<Cell: CellType>: OptionsRow<Cell>, PresenterRowType where Cell: BaseCell {
+open class SelectorRow<Cell , VCType>: OptionsRow<Cell>, PresenterRowType where Cell: BaseCell, Cell: CellType,  VCType: UIViewController, VCType: TypedRowControllerType, VCType.RowValue == Cell.Value {
 
-    
     /// Defines how the view controller will be presented, pushed, etc.
-    open var presentationMode: PresentationMode<SelectorViewController<SelectorRow<Cell>>>?
+    open var presentationMode: PresentationMode<VCType>?
 
     /// Will be called before the presentation occurs.
-    open var onPresentCallback: ((FormViewController, SelectorViewController<SelectorRow<Cell>>) -> Void)?
+    open var onPresentCallback: ((FormViewController, VCType) -> Void)?
 
     required public init(tag: String?) {
         super.init(tag: tag)
@@ -78,7 +76,7 @@ open class SelectorRow<Cell: CellType>: OptionsRow<Cell>, PresenterRowType where
      */
     open override func prepare(for segue: UIStoryboardSegue) {
         super.prepare(for: segue)
-        guard let rowVC = segue.destination as Any as? SelectorViewController<SelectorRow<Cell>> else { return }
+        guard let rowVC = segue.destination as? VCType else { return }
         rowVC.title = selectorTitle ?? rowVC.title
         rowVC.onDismissCallback = presentationMode?.onDismissCallback ?? rowVC.onDismissCallback
         onPresentCallback?(cell.formViewController()!, rowVC)

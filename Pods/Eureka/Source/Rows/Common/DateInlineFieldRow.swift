@@ -23,11 +23,10 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
 open class DateInlineCell: Cell<Date>, CellType {
 
-    public required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 

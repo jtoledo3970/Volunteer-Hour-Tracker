@@ -11,7 +11,6 @@ import Eureka
 import MessageUI
 import StoreKit
 import CoreData
-import SCLAlertView
 
 class InformationViewController: FormViewController, MFMailComposeViewControllerDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -56,6 +55,18 @@ class InformationViewController: FormViewController, MFMailComposeViewController
             }
             <<< LabelRow() { row in
                 row.title = "2019 © Toledo's IT Solutions, Inc."
+            }
+            
+            +++ Section("Your Statistics")
+            <<< TextRow() { row in
+                row.title = "Total Events"
+                row.value = String(taskCount)
+                row.disabled = true
+            }
+            <<< TextRow() { row in
+                row.title = "Total Hours"
+                row.value = ""
+                row.disabled = true
             }
 
             +++ Section()
@@ -150,7 +161,7 @@ class InformationViewController: FormViewController, MFMailComposeViewController
         {
             let objectsToShare = [message,link] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
             self.present(activityVC, animated: true, completion: nil)
         }
     }

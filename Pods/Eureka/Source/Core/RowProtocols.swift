@@ -23,7 +23,6 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
 /**
  *  Protocol that view controllers pushed or presented by a row should conform to.

@@ -23,16 +23,15 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
 public protocol InputTypeInitiable {
     init?(string stringValue: String)
 }
 
-public protocol FieldRowConformance : FormatterConformance {
-    var titlePercentage : CGFloat? { get set }
-    var placeholder : String? { get set }
-    var placeholderColor : UIColor? { get set }
+public protocol FieldRowConformance: FormatterConformance {
+    var textFieldPercentage: CGFloat? { get set }
+    var placeholder: String? { get set }
+    var placeholderColor: UIColor? { get set }
 }
 
 extension Int: InputTypeInitiable {
@@ -87,18 +86,7 @@ open class FieldRow<Cell: CellType>: FormatteableRow<Cell>, FieldRowConformance,
     open var keyboardReturnType: KeyboardReturnTypeConfiguration?
 
     /// The percentage of the cell that should be occupied by the textField
-	@available (*, deprecated, message: "Use titlePercentage instead")
-	open var textFieldPercentage : CGFloat? {
-		get {
-			return titlePercentage.map { 1 - $0 }
-		}
-		set {
-			titlePercentage = newValue.map { 1 - $0 }
-		}
-	}
-
-	/// The percentage of the cell that should be occupied by the title (i.e. the titleLabel and optional imageView combined)
-	open var titlePercentage: CGFloat?
+    open var textFieldPercentage: CGFloat?
 
     /// The placeholder for the textField
     open var placeholder: String?
@@ -139,9 +127,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
 
     open var dynamicConstraints = [NSLayoutConstraint]()
 
-	private var calculatedTitlePercentage: CGFloat = 0.7
-
-    public required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 
         let textField = UITextField()
         self.textField = textField
@@ -149,26 +135,29 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
 
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        setupTitleLabel()
+        titleLabel = self.textLabel
+        titleLabel?.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel?.setContentHuggingPriority(500, for: .horizontal)
+        titleLabel?.setContentCompressionResistancePriority(1000, for: .horizontal)
 
         contentView.addSubview(titleLabel!)
         contentView.addSubview(textField)
 
-        NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: nil) { [weak self] _ in
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillResignActive, object: nil, queue: nil) { [weak self] _ in
             guard let me = self else { return }
             guard me.observingTitleText else { return }
             me.titleLabel?.removeObserver(me, forKeyPath: "text")
             me.observingTitleText = false
         }
-        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive, object: nil, queue: nil) { [weak self] _ in
             guard let me = self else { return }
             guard !me.observingTitleText else { return }
-            me.titleLabel?.addObserver(me, forKeyPath: "text", options: [.new, .old], context: nil)
+            me.titleLabel?.addObserver(me, forKeyPath: "text", options: NSKeyValueObservingOptions.old.union(.new), context: nil)
             me.observingTitleText = true
         }
 
-        NotificationCenter.default.addObserver(forName: UIContentSizeCategory.didChangeNotification, object: nil, queue: nil) { [weak self] _ in
-            self?.setupTitleLabel()
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIContentSizeCategoryDidChange, object: nil, queue: nil) { [weak self] _ in
+            self?.titleLabel = self?.textLabel
             self?.setNeedsUpdateConstraints()
         }
     }
@@ -190,9 +179,9 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
             titleLabel?.removeObserver(self, forKeyPath: "text")
         }
         imageView?.removeObserver(self, forKeyPath: "image")
-        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIContentSizeCategory.didChangeNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIContentSizeCategoryDidChange, object: nil)
     }
 
     open override func setup() {
@@ -200,9 +189,9 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
         selectionStyle = .none
 
         if !awakeFromNibCalled {
-            titleLabel?.addObserver(self, forKeyPath: "text", options: [.new, .old], context: nil)
+            titleLabel?.addObserver(self, forKeyPath: "text", options: NSKeyValueObservingOptions.old.union(.new), context: nil)
             observingTitleText = true
-            imageView?.addObserver(self, forKeyPath: "image", options: [.new, .old], context: nil)
+            imageView?.addObserver(self, forKeyPath: "image", options: NSKeyValueObservingOptions.old.union(.new), context: nil)
         }
         textField.addTarget(self, action: #selector(_FieldCell.textFieldDidChange(_:)), for: .editingChanged)
 
@@ -214,45 +203,27 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
 
         if !awakeFromNibCalled {
             if let title = row.title {
-                switch row.cellStyle {
-                case .subtitle:
-                    textField.textAlignment = .left
-                    textField.clearButtonMode = .whileEditing
-                default:
-                    textField.textAlignment = title.isEmpty ? .left : .right
-                    textField.clearButtonMode = title.isEmpty ? .whileEditing : .never
-                }
+                textField.textAlignment = title.isEmpty ? .left : .right
+                textField.clearButtonMode = title.isEmpty ? .whileEditing : .never
             } else {
-                textField.textAlignment = .left
-                textField.clearButtonMode = .whileEditing
-            }
-        } else {
-            textLabel?.text = nil
-            titleLabel?.text = row.title
-            if #available(iOS 13.0, *) {
-                titleLabel?.textColor = row.isDisabled ? .tertiaryLabel : .label
-            } else {
-                titleLabel?.textColor = row.isDisabled ? .gray : .black
+                textField.textAlignment =  .left
+                textField.clearButtonMode =  .whileEditing
             }
         }
         textField.delegate = self
         textField.text = row.displayValueFor?(row.value)
         textField.isEnabled = !row.isDisabled
-        if #available(iOS 13.0, *) {
-            textField.textColor = row.isDisabled ? .tertiaryLabel : .label
-        } else {
-            textField.textColor = row.isDisabled ? .gray : .black
-        }
+        textField.textColor = row.isDisabled ? .gray : .black
         textField.font = .preferredFont(forTextStyle: .body)
         if let placeholder = (row as? FieldRowConformance)?.placeholder {
             if let color = (row as? FieldRowConformance)?.placeholderColor {
-                textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: color])
+                textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName: color])
             } else {
                 textField.placeholder = (row as? FieldRowConformance)?.placeholder
             }
         }
         if row.isHighlighted {
-            titleLabel?.textColor = tintColor
+            textLabel?.textColor = tintColor
         }
     }
 
@@ -286,75 +257,41 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
         guard !awakeFromNibCalled else { return }
         contentView.removeConstraints(dynamicConstraints)
         dynamicConstraints = []
-        
-        switch row.cellStyle {
-        case .subtitle:
-            var views: [String: AnyObject] =  ["textField": textField]
-            
+        var views: [String: AnyObject] =  ["textField": textField]
+        dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-11-[textField]-11-|", options: .alignAllLastBaseline, metrics: nil, views: views)
+
+        if let label = titleLabel, let text = label.text, !text.isEmpty {
+            dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-11-[titleLabel]-11-|", options: .alignAllLastBaseline, metrics: nil, views: ["titleLabel": label])
+            dynamicConstraints.append(NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: textField, attribute: .centerY, multiplier: 1, constant: 0))
+        }
+        if let imageView = imageView, let _ = imageView.image {
+            views["imageView"] = imageView
             if let titleLabel = titleLabel, let text = titleLabel.text, !text.isEmpty {
-                views["titleLabel"] = titleLabel
-                dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:[titleLabel]-3-[textField]", options: .alignAllLeading, metrics: nil, views: views)
-                // Here we are centering the textField with an offset of -4. This replicates the exact behavior of the default UITableViewCell with .subtitle style
-                dynamicConstraints.append(NSLayoutConstraint(item: textField!, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1, constant: -4))
-                dynamicConstraints.append(NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: textField, attribute: .centerX, multiplier: 1, constant: 0))
+                views["label"] = titleLabel
+                dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView]-(15)-[label]-[textField]-|", options: NSLayoutFormatOptions(), metrics: nil, views: views)
+                dynamicConstraints.append(NSLayoutConstraint(item: textField,
+                                                             attribute: .width,
+                                                             relatedBy: (row as? FieldRowConformance)?.textFieldPercentage != nil ? .equal : .greaterThanOrEqual,
+                                                             toItem: contentView,
+                                                             attribute: .width,
+                                                             multiplier: (row as? FieldRowConformance)?.textFieldPercentage ?? 0.3,
+                                                             constant: 0.0))
             } else {
-                dynamicConstraints.append(NSLayoutConstraint(item: textField!, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1, constant: 0))
+                dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView]-(15)-[textField]-|", options: [], metrics: nil, views: views)
             }
-            
-            if let imageView = imageView, let _ = imageView.image {
-                views["imageView"] = imageView
-                if let titleLabel = titleLabel, let text = titleLabel.text, !text.isEmpty {
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView]-(15)-[titleLabel]-|", options: [], metrics: nil, views: views)
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView]-(15)-[textField]-|", options: [], metrics: nil, views: views)
-                } else {
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView]-(15)-[textField]-|", options: [], metrics: nil, views: views)
-                }
-            } else {
-                if let titleLabel = titleLabel, let text = titleLabel.text, !text.isEmpty {
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[titleLabel]-|", options: [], metrics: nil, views: views)
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[textField]-|", options: [], metrics: nil, views: views)
-                } else {
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[textField]-|", options: .alignAllLeft, metrics: nil, views: views)
-                }
-            }
-            
-        default:
-            var views: [String: AnyObject] =  ["textField": textField]
-            dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-11-[textField]-11-|", options: .alignAllLastBaseline, metrics: nil, views: views)
-            
+        } else {
             if let titleLabel = titleLabel, let text = titleLabel.text, !text.isEmpty {
-                views["titleLabel"] = titleLabel
-                dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-11-[titleLabel]-11-|", options: .alignAllLastBaseline, metrics: nil, views: views)
-                dynamicConstraints.append(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: textField, attribute: .centerY, multiplier: 1, constant: 0))
-            }
-            
-            if let imageView = imageView, let _ = imageView.image {
-                views["imageView"] = imageView
-                if let titleLabel = titleLabel, let text = titleLabel.text, !text.isEmpty {
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView]-(15)-[titleLabel]-[textField]-|", options: [], metrics: nil, views: views)
-                    dynamicConstraints.append(NSLayoutConstraint(item: titleLabel,
-                                                                 attribute: .width,
-                                                                 relatedBy: (row as? FieldRowConformance)?.titlePercentage != nil ? .equal : .lessThanOrEqual,
-                                                                 toItem: contentView,
-                                                                 attribute: .width,
-                                                                 multiplier: calculatedTitlePercentage,
-                                                                 constant: 0.0))
-                } else {
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView]-(15)-[textField]-|", options: [], metrics: nil, views: views)
-                }
+                views["label"] = titleLabel
+                dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-[textField]-|", options: [], metrics: nil, views: views)
+                dynamicConstraints.append(NSLayoutConstraint(item: textField,
+                                                             attribute: .width,
+                                                             relatedBy: (row as? FieldRowConformance)?.textFieldPercentage != nil ? .equal : .greaterThanOrEqual,
+                                                             toItem: contentView,
+                                                             attribute: .width,
+                                                             multiplier: (row as? FieldRowConformance)?.textFieldPercentage ?? 0.3,
+                                                             constant: 0.0))
             } else {
-                if let titleLabel = titleLabel, let text = titleLabel.text, !text.isEmpty {
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[titleLabel]-[textField]-|", options: [], metrics: nil, views: views)
-                    dynamicConstraints.append(NSLayoutConstraint(item: titleLabel,
-                                                                 attribute: .width,
-                                                                 relatedBy: (row as? FieldRowConformance)?.titlePercentage != nil ? .equal : .lessThanOrEqual,
-                                                                 toItem: contentView,
-                                                                 attribute: .width,
-                                                                 multiplier: calculatedTitlePercentage,
-                                                                 constant: 0.0))
-                } else {
-                    dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[textField]-|", options: .alignAllLeft, metrics: nil, views: views)
-                }
+                dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[textField]-|", options: .alignAllLeft, metrics: nil, views: views)
             }
         }
         contentView.addConstraints(dynamicConstraints)
@@ -365,7 +302,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
         super.updateConstraints()
     }
 
-    @objc open func textFieldDidChange(_ textField: UITextField) {
+    open func textFieldDidChange(_ textField: UITextField) {
 
         guard let textValue = textField.text else {
             row.value = nil
@@ -376,11 +313,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
             return
         }
         if fieldRow.useFormatterDuringInput {
-            let unsafePointer = UnsafeMutablePointer<T>.allocate(capacity: 1)
-            defer {
-                unsafePointer.deallocate()
-            }
-            let value: AutoreleasingUnsafeMutablePointer<AnyObject?> = AutoreleasingUnsafeMutablePointer<AnyObject?>.init(unsafePointer)
+            let value: AutoreleasingUnsafeMutablePointer<AnyObject?> = AutoreleasingUnsafeMutablePointer<AnyObject?>.init(UnsafeMutablePointer<T>.allocate(capacity: 1))
             let errorDesc: AutoreleasingUnsafeMutablePointer<NSString?>? = nil
             if formatter.getObjectValue(value, for: textValue, errorDescription: errorDesc) {
                 row.value = value.pointee as? T
@@ -392,11 +325,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
                 return
             }
         } else {
-            let unsafePointer = UnsafeMutablePointer<T>.allocate(capacity: 1)
-            defer {
-                unsafePointer.deallocate()
-            }
-            let value: AutoreleasingUnsafeMutablePointer<AnyObject?> = AutoreleasingUnsafeMutablePointer<AnyObject?>.init(unsafePointer)
+            let value: AutoreleasingUnsafeMutablePointer<AnyObject?> = AutoreleasingUnsafeMutablePointer<AnyObject?>.init(UnsafeMutablePointer<T>.allocate(capacity: 1))
             let errorDesc: AutoreleasingUnsafeMutablePointer<NSString?>? = nil
             if formatter.getObjectValue(value, for: textValue, errorDescription: errorDesc) {
                 row.value = value.pointee as? T
@@ -407,13 +336,6 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
     }
 
     // MARK: Helpers
-
-    private func setupTitleLabel() {
-        titleLabel = self.textLabel
-        titleLabel?.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel?.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
-        titleLabel?.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
-    }
 
     private func displayValue(useFormatter: Bool) -> String? {
         guard let v = row.value else { return nil }
@@ -460,27 +382,6 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
 
     open func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return formViewController()?.textInputShouldEndEditing(textField, cell: self) ?? true
-	}
+    }
 
-	open override func layoutSubviews() {
-		super.layoutSubviews()
-		guard let row = (row as? FieldRowConformance) else { return }
-		defer {
-			// As titleLabel is the textLabel, iOS may re-layout without updating constraints, for example:
-			// swiping, showing alert or actionsheet from the same section.
-			// thus we need forcing update to use customConstraints()
-			setNeedsUpdateConstraints()
-			updateConstraintsIfNeeded()
-		}
-		guard let titlePercentage = row.titlePercentage else  { return }
-		var targetTitleWidth = bounds.size.width * titlePercentage
-		if let imageView = imageView, let _ = imageView.image, let titleLabel = titleLabel {
-			var extraWidthToSubtract = titleLabel.frame.minX - imageView.frame.minX // Left-to-right interface layout
-            if UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute) == .rightToLeft {
-                extraWidthToSubtract = imageView.frame.maxX - titleLabel.frame.maxX
-            }
-			targetTitleWidth -= extraWidthToSubtract
-		}
-		calculatedTitlePercentage = targetTitleWidth / contentView.bounds.size.width
-	}
 }

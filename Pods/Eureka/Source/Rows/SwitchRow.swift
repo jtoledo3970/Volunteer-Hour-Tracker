@@ -23,7 +23,6 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
 // MARK: SwitchCell
 
@@ -31,7 +30,7 @@ open class SwitchCell: Cell<Bool>, CellType {
 
     @IBOutlet public weak var switchControl: UISwitch!
 
-    required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let switchC = UISwitch()
         switchControl = switchC
@@ -59,7 +58,7 @@ open class SwitchCell: Cell<Bool>, CellType {
         switchControl.isEnabled = !row.isDisabled
     }
 
-    @objc func valueChanged() {
+    func valueChanged() {
         row.value = switchControl?.isOn ?? false
     }
 }
