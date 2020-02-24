@@ -10,9 +10,10 @@ import UIKit
 import Eureka
 import CoreLocation
 import CoreData
+import SCLAlertView
 
 // MARK: Extensions for Date and String
-extension NSDate{
+extension Date{
     var stringTimeValue : String {
         return self.timeToString()
     }
@@ -319,8 +320,8 @@ class AddEventFormViewController: FormViewController {
     func updateInformation() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-        var valuesDictionary = form.values()
-        var value = valuesDictionary["eventName"] as? String
+        let valuesDictionary = form.values()
+        let value = valuesDictionary["eventName"] as? String
         
         if (value != nil) {
             let timeStart = valuesDictionary["startTime"] as? Date
@@ -331,9 +332,9 @@ class AddEventFormViewController: FormViewController {
             print(timeSpent)
             
             tasks[index].eventName = valuesDictionary["eventName"] as? String
-            tasks[index].eventDate = valuesDictionary["eventDate"] as! NSDate
-            tasks[index].timeStart = timeStart as! NSDate
-            tasks[index].timeEnded = timeEnded as! NSDate
+            tasks[index].eventDate = valuesDictionary["eventDate"] as? Date
+            tasks[index].timeStart = timeStart as! Date
+            tasks[index].timeEnded = timeEnded as! Date
             tasks[index].timeSpentHours = Int16(timeSpent.0)
             tasks[index].timeSpentMinutes = Int16(timeSpent.1)
             tasks[index].eventDescription = valuesDictionary["description"] as? String
@@ -364,9 +365,9 @@ class AddEventFormViewController: FormViewController {
             
             let task = Task(context: context)
             task.eventName = valuesDictionary["eventName"] as? String
-            task.eventDate = valuesDictionary["eventDate"] as! NSDate
-            task.timeStart = timeStart as! NSDate
-            task.timeEnded = timeEnded as! NSDate
+            task.eventDate = valuesDictionary["eventDate"] as! Date
+            task.timeStart = timeStart as! Date
+            task.timeEnded = timeEnded as! Date
             task.timeSpentHours = Int16(timeSpent.0)
             task.timeSpentMinutes = Int16(timeSpent.1)
             task.eventDescription = valuesDictionary["description"] as? String
